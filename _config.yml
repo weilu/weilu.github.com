@@ -4,7 +4,7 @@
 
 url: http://weilu.github.com
 title: What she said
-subtitle: Wei's 2 cents
+subtitle:
 author: Wei Lu
 simple_search: http://google.com/search
 description:
@@ -59,7 +59,7 @@ default_asides: [asides/github.html, asides/twitter.html, asides/googleplus.html
 
 # Github repositories
 github_user: weilu
-github_repo_count: 0
+github_repo_count: 7
 github_show_profile_link: true
 github_skip_forks: true
 
@@ -77,11 +77,11 @@ google_plus_one_size: medium
 
 # Google Plus Profile
 # Hidden: No visible button, just add author information to search results
-googleplus_user: luwei.here@gmail.com
+googleplus_user: 115739697460641456462
 googleplus_hidden: false
 
 # Pinboard
-pinboard_user: luwei.here@gmail.com
+pinboard_user:
 pinboard_count: 3
 
 # Delicious
