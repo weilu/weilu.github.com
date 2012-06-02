@@ -4,8 +4,9 @@ title: "about 葳"
 date: 2012-05-28 23:33
 comments: false
 sharing: true
-footer: true
+footer: false
 ---
+
 I'm an agile developer currently working for [{new context}](http://newcontext.com/ "awesome company") Singapore, formerly known as [Pivotal Labs](http://pivotallabs.com/ "another awesome company") Singapore. I graduated from [National University of Singapore](http://en.wikipedia.org/wiki/National_University_of_Singapore) with a bachelor's degree in Information Systems. 
 
 Born in [Xi'an](http://en.wikipedia.org/wiki/Xi'an) China, I left home for university at age 16. During the 4.5 years in university, I spent half a year in [University of Waterloo](http://en.wikipedia.org/wiki/University_of_Waterloo) in Canada and a year in the bay area working as an intern software engineer for [Rocket Fuel](http://rocketfuel.com/ "also pretty awesome") while studying part time in [Stanford University](http://en.wikipedia.org/wiki/Stanford_University).
