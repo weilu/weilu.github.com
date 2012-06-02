@@ -1,10 +1,9 @@
-$noise-bg: image-url('site-background.png') top left !default;
 $img-border: #666;
 
 // Main Link Colors
-$link-color: darken(#36c, 35) !default;
-$link-color-hover: #36c !default; // desaturate(darken($link-color, 40), 25) 
-$link-color-visited: desaturate(#36c, 25) !default;
+$link-color: $solar-red !default;
+$link-color-hover: white !default;
+$link-color-visited: desaturate($solar-red, 25) !default;
 $link-color-active: $link-color-visited !default;
 
 // Main Section Colors
@@ -17,7 +16,7 @@ $header-border: none !default;
 $title-color: #000 !default;
 $subtitle-color: #aaa !default;
 
-$text-color: #000 !default;
+$text-color: #595454 !default;
 $text-color-light: #666 !default;
 $type-border: #ddd !default;
 
@@ -30,7 +29,6 @@ $nav-color-hover: $link-color-hover !default;
 $nav-placeholder: desaturate(darken($text-color, 10), 15) !default;
 $nav-border: lighten($text-color-light, 38) !default;
 $nav-border-top: #fff !default;
-$nav-border-bottom: $nav-border !default;
 $nav-border-left: $nav-border !default;
 $nav-border-right: #fff !default;
 
@@ -56,13 +54,21 @@ $footer-border-top: #fff !default;
 $footer-border-bottom: none !default;
 $footer-link-color: darken($text-color-light, 38) !default;
 $footer-link-color-hover: darken($footer-color, 25) !default;
-$page-border-bottom: lighten($text-color-light, 38) !default;
+$page-border-bottom: $solar-red;
 
 
 /* Core theme application */
 
 a {
   @include link-colors($link-color, $hover: $link-color-hover, $focus: $link-color-hover, $visited: $link-color-visited, $active: $link-color-active);
+  text-decoration: none;
+
+  &:hover{
+    background: $solar-red;
+    border-radius: 2px;
+    padding: 0 4px;
+    margin: 0 -4px
+  }
 }
 aside.sidebar a {
   @include link-colors($sidebar-link-color, $hover: $sidebar-link-color-hover, $focus: $sidebar-link-color-hover, $active: $sidebar-link-color-active);
@@ -72,13 +78,12 @@ a {
 }
 
 html {
-  background: transparent $noise-bg;
+  background: white ;
 }
 body {
   > div {
     background: $sidebar-bg;
     border-top: 1px solid #fff;
-    border-bottom: 1px solid $page-border-bottom;
     > div {
       background: $main-bg;
       border-right: 1px solid $sidebar-border;

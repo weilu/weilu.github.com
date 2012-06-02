@@ -1,13 +1,14 @@
 body > header {
-  border-bottom: 1px solid lighten($text-color-light, 38);
+  border-bottom: 1px solid $solar-red;
   text-align: center;
   h1 {
     display: inline-block;
     margin: 0;
     a, a:visited, a:hover {
-      color: $title_color;
+      color: $grey;
       text-decoration: none;
       font-weight: bold;
+      background: transparent;
     }
   }
   h2 {

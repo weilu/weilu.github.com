@@ -2,9 +2,6 @@ body > nav {
   position: relative;
   background-color: $nav-bg;
   @include background($nav-bg-front, $nav-bg-back);
-  border: {
-    top: 1px solid $nav-border-top;
-    bottom: 1px solid $nav-border-bottom; }
   padding-top: .35em;
   padding-bottom: .35em;
   form {
@@ -41,6 +38,7 @@ body > nav {
       float: left;
       display: block;
       padding-top: .3em;
+      margin-left: -0.8em
     }
     ul.subscription {
       margin-left: .8em;
@@ -48,7 +46,7 @@ body > nav {
       li:last-child a { padding-right: 0; }
     }
     ul li {
-      margin: 0;
+      margin: 0 0.8em;
     }
     a {
       @include link-colors($nav-color, $nav-color-hover, $visited: $nav-color);
@@ -58,14 +56,6 @@ body > nav {
       font-size: 1.1em;
       padding: 0;
       line-height: 1.5em;
-    }
-    li + li {
-      border-left: 1px solid $nav-border-left;
-      margin-left: .8em;
-      a {
-        padding-left: .8em;
-        border-left: 1px solid $nav-border-right;
-      }
     }
     form {
       float: right;
