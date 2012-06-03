@@ -1,8 +1,8 @@
 $blockquote: $type-border !default;
-$sans: 'HelveticaNeue-Light','HelveticaNeue',Helvetica,Arial,sans-serif !default;
+$sans: Trebuchet MS,Liberation Sans,DejaVu Sans,sans-serif !default;
 $serif: "PT Serif", Georgia, Times, "Times New Roman", serif !default;
 $mono: Menlo, Monaco, "Andale Mono", "lucida console", "Courier New", monospace !default;
-$heading-font-family: 'HelveticaNeue-CondensedBold','HelveticaNeue',Helvetica,Arial,sans-serif !default;
+$heading-font-family: "Gill Sans W01", "Gill Sans MT Pro", "Gill Sans", GillSans, sans-serif !default;
 $header-title-font-family: $heading-font-family !default;
 $header-subtitle-font-family: $sans !default;
 
@@ -36,6 +36,7 @@ h1 {
   font-size: 2.2em;
   line-height: 1.2em;
   text-shadow: #fff 0 2px 0;
+  letter-spacing: 0.01em
 }
 
 @media only screen and (min-width: 768px) {
