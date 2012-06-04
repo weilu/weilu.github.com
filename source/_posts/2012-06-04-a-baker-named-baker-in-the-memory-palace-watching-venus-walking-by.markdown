@@ -1,0 +1,28 @@
+---
+layout: post
+title: "A baker named Baker in the Memory Palace watching Venus walking by"
+date: 2012-06-04 23:29
+comments: true
+share: true
+categories: [Interesting, Learn, Ted, Facts, Memory]
+---
+
+It started with this talk by Joshua Foer on how one can use techniques like *the memory palace* to cultivate his/her memory to prepare speeches, remember random numbers and in his case, won a memory competition. I like his final remark about how the convenience provided by technology trained us to be too lazy to remember. But life is short and we are the sum of our memories. We need to be the kind of person who remembers to remember.
+
+<object width="526" height="374">
+<param name="movie" value="http://video.ted.com/assets/player/swf/EmbedPlayer.swf"></param>
+<param name="allowFullScreen" value="true" />
+<param name="allowScriptAccess" value="always"/>
+<param name="wmode" value="transparent"></param>
+<param name="bgColor" value="#ffffff"></param>
+<param name="flashvars" value="vu=http://video.ted.com/talk/stream/2012/Blank/JoshuaFoer_2012-320k.mp4&su=http://images.ted.com/images/ted/tedindex/embed-posters/JoshuaFoer_2012-embed.jpg&vw=512&vh=288&ap=0&ti=1443&lang=&introDuration=15330&adDuration=4000&postAdDuration=830&adKeys=talk=joshua_foer_feats_of_memory_anyone_can_do;year=2012;theme=how_the_mind_works;theme=numbers_at_play;theme=ted_under_30;event=TED2012;tag=brain;tag=culture;tag=memory;tag=neuroscience;tag=science;&preAdTag=tconf.ted/embed;tile=1;sz=512x288;" />
+<embed src="http://video.ted.com/assets/player/swf/EmbedPlayer.swf" pluginspace="http://www.macromedia.com/go/getflashplayer" type="application/x-shockwave-flash" wmode="transparent" bgColor="#ffffff" width="526" height="374" allowFullScreen="true" allowScriptAccess="always" flashvars="vu=http://video.ted.com/talk/stream/2012/Blank/JoshuaFoer_2012-320k.mp4&su=http://images.ted.com/images/ted/tedindex/embed-posters/JoshuaFoer_2012-embed.jpg&vw=512&vh=288&ap=0&ti=1443&lang=&introDuration=15330&adDuration=4000&postAdDuration=830&adKeys=talk=joshua_foer_feats_of_memory_anyone_can_do;year=2012;theme=how_the_mind_works;theme=numbers_at_play;theme=ted_under_30;event=TED2012;tag=brain;tag=culture;tag=memory;tag=neuroscience;tag=science;&preAdTag=tconf.ted/embed;tile=1;sz=512x288;"></embed>
+</object>
+
+It's a great talk. Having a cultivated memory is not only important but also pretty handy. As sad and visually unpleasant the original memory palace story is, the technique actually sounded pretty fun. So I was reading about the [transit of Venus](http://en.wikipedia.org/wiki/Transit_of_Venus, "transit of Venus"). Here is a little application:
+
+> In forever 21, a 5-year-old boy is holding a full mark paper(100/100), while his young beautiful mother (who's wearing a pair of very big glasses) reluctantly walks away from a big big round mirror to the fitting room.
+
+That translate to:
+
+> Transits of Venus occur in a pattern that repeats every 243 years, with pairs of transits eight years apart separated by long gaps of 121.5 years and 105.5 years.
