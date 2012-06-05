@@ -27,6 +27,5 @@
   }
   a[href*='twitter.com/search']{
     @extend .aside-alt-link;
-    @include hover-link;
   }
 }

@@ -57,7 +57,6 @@ html .gist .gist-file {
    line-height: 1.5em;
     a {
       color: mix($base1, $base01) !important;
-      @include hover-link;
       &:hover { color: $base1 !important; }
     }
     a[href*='#file'] {
@@ -250,7 +249,6 @@ figure.code {
 
 .download-source {
   position: absolute; right: .8em;
-  @include hover-link;
   color: #666 !important;
   z-index: 1;
   font-size: 13px;
