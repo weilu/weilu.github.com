@@ -46,6 +46,10 @@ article {
     padding: .25em;
     background-color: #fff;
   }
+  img.plain {
+    box-shadow: none;
+    border: none;
+  }
   video, .flash-video { margin: 0 auto 1.5em; }
   video { display: block; width: 100%; }
   .flash-video {
