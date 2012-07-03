@@ -3,3 +3,22 @@
 @import "base/theme";
 @import "base/typography";
 @import "base/layout";
+
+figure.code .highlight{
+  border-radius: 4px
+}
+
+td.code, td.gutter{
+  border: none;
+  padding: 0;
+  pre{
+    border-radius: 0
+  }
+}
+
+::selection {
+	background: #ffff00;
+}
+::-moz-selection {
+	background: #ffff00;
+}
