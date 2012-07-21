@@ -36,3 +36,6 @@ I finished the book this morning. It was no doubt an amazing book, easily my top
 > “You risked your life, but what else have you ever risked? Have you risked disapproval? Have you ever risked economic security? Have you ever risked a belief? I see nothing particularly courageous about risking one's life. So you lose it, you go to your hero's heaven and everything is milk and honey 'til the end of time. Right? You get your reward and suffer no earthly consequences. That's not courage. Real courage is risking something that might force you to rethink your thoughts and suffer change and stretch consciousness. Real courage is risking one's clichés.” ― Tom Robbins, Another Roadside Attraction
 
 The super ultra point is, I should quit taking myself too seriously and Tom Robbins is pretty damn awesome. I should read more books of his =) Peace!
+
+*Quotes references: [goodreads](http://www.goodreads.com/author/quotes/197.Tom_Robbins),
+[secretshelflife](http://secretshelflife.blogspot.sg/2011/04/jitterbug-perfume.html)
