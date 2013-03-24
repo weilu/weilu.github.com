@@ -80,12 +80,12 @@ module Jekyll
     def render(context)
       output = super
       code = super
-      source = "<div class='gist'><figure class='code gist-file'>"
+      source = "<figure class='code'>"
       source += @caption if @caption
       if @filetype
         source += " #{highlight(code, @filetype)}</figure>"
       else
-        source += "#{tableize_code(code.lstrip.rstrip.gsub(/</,'&lt;'))}</figure></div>"
+        source += "#{tableize_code(code.lstrip.rstrip.gsub(/</,'&lt;'))}</figure>"
       end
       source = safe_wrap(source)
       source = context['pygments_prefix'] + source if context['pygments_prefix']

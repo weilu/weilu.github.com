@@ -1,61 +1,61 @@
 .gist {
   color: #000;
+}
 
-  .gist-file {
-    border: 1px solid #dedede;
-    font-family: Consolas, "Liberation Mono", Courier, monospace;
-    margin-bottom: 1em;
+.gist-file, figure.code {
+  border: 1px solid #dedede;
+  font-family: Consolas, "Liberation Mono", Courier, monospace;
+  margin-bottom: 1em;
 
-    .gist-meta {
-      font-family: Helvetica, arial, freesans, clean, sans-serif;
-      overflow: hidden;
-      font-size: 85%;
-      color: #666;
-      background-color: #eaeaea;
-      padding: .5em;
-      a {
-        color: #369;
-        &:visited {
-          color: #737;
-        }
+  .gist-meta {
+    font-family: Helvetica, arial, freesans, clean, sans-serif;
+    overflow: hidden;
+    font-size: 85%;
+    color: #666;
+    background-color: #eaeaea;
+    padding: .5em;
+    a {
+      color: #369;
+      &:visited {
+        color: #737;
       }
     }
+  }
 
-    .gist-data {
-      overflow: auto;
-      word-wrap: normal;
-      background-color: #f8f8ff;
-      border-bottom: 1px solid #ddd;
-      font-size: 100%;
-      .line-data {
-        padding: .5em!important;
-      }
-      .line-pre {
-        font-family: Consolas, "Liberation Mono", Courier, monospace;
-        background: transparent!important;
-        border: none!important;
-        margin: 0!important;
-        padding: 0!important;
-      }
-      .gist-highlight {
-        background: transparent!important;
-      }
-      .line-numbers {
-        background-color: #ececec;
-        color: #aaa;
-        border-right: 1px solid #ddd;
-        text-align: right;
-        padding: .5em;
-        .line-number {
-          clear: right;
-          display: block;
-        }
+  .gist-data, .highlight {
+    overflow: auto;
+    word-wrap: normal;
+    background-color: #f8f8ff;
+    border-bottom: 1px solid #ddd;
+    font-size: 100%;
+    .line-data, .code {
+      padding: .5em!important;
+    }
+    .line-pre {
+      font-family: Consolas, "Liberation Mono", Courier, monospace;
+      background: transparent!important;
+      border: none!important;
+      margin: 0!important;
+      padding: 0!important;
+    }
+    .gist-highlight {
+      background: transparent!important;
+    }
+    .line-numbers, .gutter {
+      background-color: #ececec;
+      color: #aaa;
+      border-right: 1px solid #ddd;
+      text-align: right;
+      padding: .5em;
+      .line-number {
+        clear: right;
+        display: block;
       }
     }
   }
 }
 
-.gist-syntax {
+.gist-syntax, .highlight {
   background: #fff;
   .err {
     color: #a61717;
