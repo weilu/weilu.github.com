@@ -204,9 +204,7 @@ dt, dd, li { padding-bottom: .25em; }
 table {
 	@extend .flex-content;
     @extend .basic-alignment;
-    @include shadow-box($border: #aaa 1px solid, $shadow: rgba(#000, .25) 0 2px 10px, $border-radius: .3em);
     padding: .25em .25em;
-	background-color: lighten($type-border, 5);
 //	margin: 0 auto; margin-bottom: 2em;
 	thead, thead th { font-weight: bold; font-size: 1em; }
 	thead { border-bottom: 2px solid $text-color; }
@@ -216,4 +214,3 @@ table {
 		border-bottom: 1px solid lighten($text-color-light, 40);
 	}
 }
-//table { border: 1px solid #aaa; }
