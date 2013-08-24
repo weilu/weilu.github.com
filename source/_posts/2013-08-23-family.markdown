@@ -1,0 +1,35 @@
+---
+layout: post
+title: "Family"
+date: 2013-08-23 22:23
+comments: true
+categories: [family]
+---
+<iframe width="480" height="360" src="//www.youtube.com/embed/w0oyZKR7Pgw" frameborder="0" allowfullscreen> </iframe>
+
+Let's talk about family. Why not? I am who I am largely because of my family. Here is an incomplete laundry list of what I learnt from my family growing up
+
+Once we were watching a movie. The girl in the movie said to the guy, I can't live without you. My mother turned to me and said, that's bullshit. You can live without anybody. Remember that. I thought to myself, that's really badass. And that's still something I live by today.
+
+I was a quiet kid who asked few questions. It's not because I didn't have questions, only because I enjoy thinking about them and trying to figure them out myself. Mother knows me. She bought me lots lots of books, subscribed me to sci-fi magazines, the Chinese equivalent of reader's digest and more, bought me the Chinese equivalent of legos, lots of them. She likes to tell me how I built amazing castles and ships with them, which I have no memories of... In my mind, my creations were more like
+
+![snowflakes](/images/post/2013-08-23-snowflakes.jpg "snowflakes")
+
+My grandma has always been my role model. She's retired now but she had a successful career as a civil engineer. And we are talking about 1960s in China, a college graduate with a degree in civil engineering => my grandma. Then, there weren't many people who went to college to start with. She was the youngest and and graduated as one of the only three female students in her class. There are more to my grandma's story. It's a post by itself. The idea is, she's pure awesome.
+
+Grandma taught me patience. She's the one I turned to whenever I messed up yarn/thread that I played with. It never failed to surprise me how she ALWAYS managed to untie all the knots doesn't matter how badly knotted they are.
+
+Father is my favorite in the family (Sorry Mom). He's a serious surgeon at work and a prudent man in general. But to me father means fun and adventures in my childhood.
+We had our stupid games that my mother disapproves of. She said it was childish for my age. But we just laughed and kept on playing until I left home for university.
+
+I learnt earnest from my father. He loves his job. He's always accountable and dependable. He does what he thinks is right regardless of the peer pressure.
+
+He also told me that life is like a sine wave: there are ups and downs. When it seems bad and you are sad, you should know that things are about to get better; and when you are on top of the world you should be aware of the downward slope ahead of you. Thinking about the sine wave got me through countless hard times. Thanks dad.
+
+![sine](/images/post/2013-08-23-sine.gif "sine")
+
+<a href="{{ root_url }}/small-things-about-father">Appendix: Small things about my father</a>
+
+There's that. I enjoy doing things that make my family proud just because =)
+
+
