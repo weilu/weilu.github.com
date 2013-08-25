@@ -7,7 +7,7 @@ categories: [family]
 ---
 <iframe width="480" height="360" src="//www.youtube.com/embed/w0oyZKR7Pgw" frameborder="0" allowfullscreen> </iframe>
 
-Let's talk about family. Why not? I am who I am largely because of my family. Here is an incomplete laundry list of what I learnt from my family growing up
+Let's talk about family. Why not? I am who I am largely because of my family. Here is an incomplete laundry list of what I learnt from my family growing up.
 
 Once we were watching a movie. The girl in the movie said to the guy, I can't live without you. My mother turned to me and said, that's bullshit. You can live without anybody. Remember that. I thought to myself, that's really badass. And that's still something I live by today.
 
@@ -27,6 +27,10 @@ I learnt earnest from my father. He loves his job. He's always accountable and d
 He also told me that life is like a sine wave: there are ups and downs. When it seems bad and you are sad, you should know that things are about to get better; and when you are on top of the world you should be aware of the downward slope ahead of you. Thinking about the sine wave got me through countless hard times. Thanks dad.
 
 ![sine](/images/post/2013-08-23-sine.gif "sine")
+
+There are things that parents force their kids to do. It was like hell for the kids at the time, but as the kids grow up they turned out to be thankful for what they were forced to do. A classic example is learning instruments. It's hard work. There are hardly any kids who can't wait to go to piano lessons at the age of 5. But later they realize that growing up means taking a one-way busy train -- you no longer have time for learning piano and even if you manage to get to it you'll never be as good as those who started young.
+
+My parents didn't force me to learn any instruments, I can't blame them for that. But I can thank my father for forcing me to take up the leadership role since primary school. It was hard for me as I was a quiet and shy kid. But if not for my father I would not be where I am today. I've met so many people who are smarter than me but too shy to lead. It's one thing to do your job well, other to excel as a leader. I have yet to excel but being able to step up opens doors. Daring to be ambitious is the first step to putting a dent in the universe.
 
 <a href="{{ root_url }}/small-things-about-father">Appendix: Small things about my father</a>
 
