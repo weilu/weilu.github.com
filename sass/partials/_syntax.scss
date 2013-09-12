@@ -1,11 +1,17 @@
 .gist {
   color: #000;
+  font-size: 14px;
 }
 
 .gist-file, figure.code {
   border: 1px solid #dedede;
   font-family: Consolas, "Liberation Mono", Courier, monospace;
   margin-bottom: 1em;
+
+  table th, table td {
+    border-left: none;
+    border-bottom: none;
+  }
 
   .gist-meta {
     font-family: Helvetica, arial, freesans, clean, sans-serif;
@@ -26,7 +32,6 @@
     overflow: auto;
     word-wrap: normal;
     background-color: #f8f8ff;
-    border-bottom: 1px solid #ddd;
     font-size: 100%;
     .line-data, .code {
       padding: .5em!important;
