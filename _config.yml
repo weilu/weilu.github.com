@@ -97,3 +97,10 @@ google_analytics_tracking_id: UA-32174789-1
 
 # Facebook Like
 facebook_like: false
+
+# navigation
+navigation:
+ - text: Blog
+   url: /
+ - text: About
+   url: /about/

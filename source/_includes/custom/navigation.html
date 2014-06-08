@@ -1,5 +1,9 @@
+{% capture url %}{{ page.url | remove: 'index.html' }}{% endcapture %}
 <ul class="main-navigation">
-  <li><a href="{{ root_url }}/">Blog</a></li>
-  <!-- <li><a href="{{ root_url }}/blog/archives">Archives</a></li> -->
-  <li><a href="{{ root_url }}/about">About</a></li>
+  {% for link in site.navigation %}
+  <li>
+      <a {% if url == link.url %}class="active"{% endif %} href="{{link.url}}" >{{link.text}}</a>
+  </li>
+  {% endfor %}
 </ul>
+
