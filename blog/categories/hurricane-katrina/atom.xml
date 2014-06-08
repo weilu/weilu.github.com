@@ -1,0 +1,54 @@
+<?xml version="1.0" encoding="utf-8"?>
+<feed xmlns="http://www.w3.org/2005/Atom">
+
+  <title><![CDATA[Category: hurricane katrina | What she said]]></title>
+  <link href="http://weilu.github.io/blog/categories/hurricane-katrina/atom.xml" rel="self"/>
+  <link href="http://weilu.github.io/"/>
+  <updated>2014-06-08T14:39:43+08:00</updated>
+  <id>http://weilu.github.io/</id>
+  <author>
+    <name><![CDATA[Wei Lu]]></name>
+    <email><![CDATA[luwei.here@gmail.com]]></email>
+  </author>
+  <generator uri="http://octopress.org/">Octopress</generator>
+
+  
+  <entry>
+    <title type="html"><![CDATA[Hurricane Katrina]]></title>
+    <link href="http://weilu.github.io/blog/2012/07/02/hurricane-katrina/"/>
+    <updated>2012-07-02T21:20:00+08:00</updated>
+    <id>http://weilu.github.io/blog/2012/07/02/hurricane-katrina</id>
+    <content type="html"><![CDATA[<p>This is a story about the song Hurricane Katrina by Nadeah. The bottom line is that I love the song, but I didn't buy the song and I'm not proud of it.</p>
+
+<p>First I heard the song on <a href="http://www.abc.net.au/triplej/roots/playlist/default.htm">Triple J</a> How did I learn about such an awesome Australian radio station? That's another story goes back to <a href="http://railscamps.com/">Rails Camp</a>@<a href="http://goo.gl/maps/NoYP">Springbrook</a> and a nice gentlemen who goes by <a href="https://twitter.com/#!/MarkRatjens">@MarkRatjens</a> on Twitter =)</p>
+
+<p>The song instantly got to me. My first reaction was to go on youtube trying to search for it. There was a couple live versions. I was of course dissatisfied. So next up vimeo.com yet no studio version. But the silver lining is that I found another cute and apparently more famous song of Nadeah's : Odile</p>
+
+<iframe src="http://player.vimeo.com/video/31532711" width="500" height="281" frameborder="0" webkitAllowFullScreen mozallowfullscreen allowFullScreen></iframe>
+
+
+<p>So after playing Odile for a couple times I decided the album "Venus Gets Even" which both songs are from is what I want.</p>
+
+<p>ME WANTZ:
+<img src="/images/post/2012-07-02-venus-gets-even.jpg" title="[venus gets even]" ></p>
+
+<p>So being a responsible good citizen as I am, I went to iTunes Store. Searched and got: <em>Your search had no results.</em> Hmmm fine. Googled and got to Nadeah's official site. Sweet, I can 'buy online' or 'by on iTunes'. Let's try iTunes again, since it would not require shipping of any sort. There I was, iTunes Store France... Never mind, I still know where the buy button is. So I clicked and got: <em>This Apple ID is only valid for purchases in the U.S. iTunes Store. You will be switched to that Store. Try your purchase again.</em> And redirected to iTunes Store home page I was. Back to square one. Fine I'll have it shipped. So I filled in my shipping details, was redirected to paypal, logged in and bam! something like <em>The merchant does not ship to your country.</em> And redirected I was back on Nadeah's homepage. Why does nobody want to take my money?!</p>
+
+<p><img src='http://weilu.github.io/images/post/2012-07-02-rage-face.png' title='rageface' class='plain'/></p>
+
+<p>That's it, torrent time. There we go: 0 seed and 0 leech. You know how it works - the more you can't have it, the more you desire it. So the only decent version I have is from streaming from Triple J. If only I could record it...</p>
+
+<p>Googling mac audio recorder gives me <a href="http://audacity.sourceforge.net/">Audacity</a>. Following the <a href="http://manual.audacityteam.org/help/manual/man/tutorial_recording_computer_playback_on_mac.html">tutorial</a> I had my audio output redirect to <a href="http://cycling74.com/soundflower-landing-page/">soundflower</a> and simply by playing the time range of the streaming on Triple J the song was recorded. With a bit of cleaning up like some cropping and fading out the last bit. Here is what I got:</p>
+
+<p><audio controls="controls">
+  <source src="http://weilu.github.io/media/Hurricane_Katrina.mp3" type="audio/mp3" />
+  Awww too bad your browser does not support the audio tag.
+</audio></p>
+
+<p>Enjoy. I guess that's what they call a guilty pleasure.</p>
+
+<p>*disclaimer: I do not own the song. The song is not for distribution. It's only for sharing because it is beautiful.</p>
+]]></content>
+  </entry>
+  
+</feed>

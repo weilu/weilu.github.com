@@ -1,0 +1,112 @@
+<?xml version="1.0" encoding="utf-8"?>
+<feed xmlns="http://www.w3.org/2005/Atom">
+
+  <title><![CDATA[Category: coding | What she said]]></title>
+  <link href="http://weilu.github.io/blog/categories/coding/atom.xml" rel="self"/>
+  <link href="http://weilu.github.io/"/>
+  <updated>2014-06-08T14:39:43+08:00</updated>
+  <id>http://weilu.github.io/</id>
+  <author>
+    <name><![CDATA[Wei Lu]]></name>
+    <email><![CDATA[luwei.here@gmail.com]]></email>
+  </author>
+  <generator uri="http://octopress.org/">Octopress</generator>
+
+  
+  <entry>
+    <title type="html"><![CDATA[Conditionally Switching off Transactional Fixtures]]></title>
+    <link href="http://weilu.github.io/blog/2012/11/10/conditionally-switching-off-transactional-fixtures/"/>
+    <updated>2012-11-10T13:10:00+08:00</updated>
+    <id>http://weilu.github.io/blog/2012/11/10/conditionally-switching-off-transactional-fixtures</id>
+    <content type="html"><![CDATA[<p>Rspec gives us the ability to use transactional fixtures:</p>
+
+<p><div class='bogus-wrapper'><notextile><figure class='code'> <div class="highlight"><table><tr><td class="gutter"><span class='line-number'>1</span>
+</td><td class='code'><pre><code class='ruby'><span class='line'><span class="n">config</span><span class="o">.</span><span class="n">use_transactional_fixtures</span> <span class="o">=</span> <span class="kp">true</span>
+</span></code></pre></td></tr></table></div></figure></notextile></div></p>
+
+<p>We like it because it makes the test fast by opening a database transaction at the beginning of a test and rolling it back at the end of it. Nothing gets written into database. But, this does not work with Capybara javascript tests (Such a long name, I'm going to call it selenium specs from now on just for simplicity sake and legacy reasons. And no, I don't prefer selenium as a driver over Capybara-webkit. Quite the opposite.) because they use a separate server thread, which means the transaction is not visible to the client. So intuitively we wonder, is there a way to turn off transactional fixtures only for selenium specs? <a href="http://stackoverflow.com/questions/3853098/turn-off-transactional-fixtures-for-one-spec-with-rspec-2">A quick googling</a> suggests that one should simply turn off transactional fixtures and use database cleaner for all the tests. I go</p>
+
+<p><img src="/images/post/2012-11-10-no.jpg" alt="no" /></p>
+
+<p>I'd use <a href="https://github.com/bmabey/database_cleaner">database cleaner</a> to truncate my tables after/before each selenium specs but definitely not for every non-selenium specs like model and controller spec. What about using database cleaner's transaction strategy for those? I could... And more on that later. But hey if rspec can talk to active record to enable transactional fixtures directly why have someone else do it? So here it goes:</p>
+
+<p><div><script src='https://gist.github.com/4017097.js?file=spec_helper.rb'></script>
+<noscript><pre><code>RSpec.configure do |config|
+  config.use_transactional_fixtures = true
+  config.include SeleniumHelper, :type =&gt; :request
+  
+  config.before(:suite) do
+    DatabaseCleaner.strategy = :truncation
+  end
+
+  config.before(:each, js: true) do
+    DatabaseCleaner.start
+  end
+
+  config.after(:each, js: true) do
+    DatabaseCleaner.clean
+  end
+end</code></pre></noscript></div>
+
+<div><script src='https://gist.github.com/4017097.js?file=selenium_helper.rb'></script>
+<noscript><pre><code># support/selenium_helper.rb
+
+module SeleniumHelper
+  def self.included(base)
+    base.class_eval do
+      self.use_transactional_fixtures = false if metadata[:js]
+    end
+  end
+end</code></pre></noscript></div>
+</p>
+
+<p>To use it, you need to put the js tag on feature(alias of <em>describe</em>) instead of the scenario(alias of <em>it</em>), because it is simply too late once you are in the space of a scenario. For the same reason, you can't turn it off in a conditional <em>before(:each)</em> hook in spec helper.</p>
+
+<p><div><script src='https://gist.github.com/4017097.js?file=edit_post_spec.rb'></script>
+<noscript><pre><code># requests/edit_post_spec.rb
+
+require 'spec_helper'
+
+feature 'editing a post', js: true do
+  let(:post) { create :post }
+  let(:user) { post.creator }
+
+  before { sign_in user }
+
+  scenario 'creator attaches an image to a post' do
+    # user attaches image and expects to see it after submit
+  end
+end</code></pre></noscript></div>
+</p>
+
+<p>*Credit: the above gist was derived from code written by <a href="https://twitter.com/mmazur">Mike Mazur</a> and I as a pair.</p>
+
+<p>So I was pretty pleased with the above solution and I went ahead made the gist for my future self. But, then I asked myself again: what about database cleaner's <em>transaction</em> strategy? How does it work differently from active record's <em>use_transactional_fixtures</em> which rspec essentially use? After a bit of code reading, I realized the answer is... it isn't any different. <a href="https://github.com/rails/rails/blob/master/activerecord/lib/active_record/fixtures.rb#L846">Here is how active record does it</a>. <a href="https://github.com/bmabey/database_cleaner/blob/master/lib/database_cleaner/active_record/transaction.rb">Here is how database cleaner does it</a>. <a href="http://stackoverflow.com/questions/13234454/test-speed-activerecord-use-transactional-fixtures-vs-databasecleaner-strategy">Here is me trying to make sure I'm not crazy after reading what I read</a>.</p>
+
+<p>It's a nice thing to figure out how to turn off transactional fixtures conditionally. But end of the day, it is not necessary. So yea, Interwebz is right -- just turn off transactional fixtures all together and use database cleaner. Here is to my future self and anyone who ever wonders how to turn off transactional fixtures for selenium specs only:
+<div><script src='https://gist.github.com/4050393.js?file='></script>
+<noscript><pre><code>RSpec.configure do |config|
+  config.use_transactional_fixtures = false
+
+  config.before(:suite) do
+    DatabaseCleaner.clean_with :truncation
+  end
+
+  config.before(:each) do
+    if example.metadata[:js]
+      DatabaseCleaner.strategy = :truncation
+    else
+      DatabaseCleaner.strategy = :transaction
+    end
+    DatabaseCleaner.start
+  end
+
+  config.after(:each) do
+    DatabaseCleaner.clean
+  end
+end</code></pre></noscript></div>
+</p>
+]]></content>
+  </entry>
+  
+</feed>

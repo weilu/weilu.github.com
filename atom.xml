@@ -1,0 +1,539 @@
+<?xml version="1.0" encoding="utf-8"?>
+<feed xmlns="http://www.w3.org/2005/Atom">
+
+  <title><![CDATA[What she said]]></title>
+  <link href="http://weilu.github.io/atom.xml" rel="self"/>
+  <link href="http://weilu.github.io/"/>
+  <updated>2014-06-08T14:39:43+08:00</updated>
+  <id>http://weilu.github.io/</id>
+  <author>
+    <name><![CDATA[Wei Lu]]></name>
+    <email><![CDATA[luwei.here@gmail.com]]></email>
+  </author>
+  <generator uri="http://octopress.org/">Octopress</generator>
+
+  
+  <entry>
+    <title type="html"><![CDATA[Bitcoin Address Reuse]]></title>
+    <link href="http://weilu.github.io/blog/2014/06/08/bitcoin-address-reuse/"/>
+    <updated>2014-06-08T14:28:00+08:00</updated>
+    <id>http://weilu.github.io/blog/2014/06/08/bitcoin-address-reuse</id>
+    <content type="html"><![CDATA[<p>Why is it a bad practice? It&#8217;s bad for privacy and potentially security under certain circumstances.</p>
+
+<h2>Privacy</h2>
+
+<h3>Background</h3>
+
+<p>My salary is paid in Bitcoin (reality). I use a single Bitcoin address for everything (fictional). You and I are friends (fictional, obviously).</p>
+
+<h3>The Story</h3>
+
+<p>Say we had a good time hanging out in a bar. Your significant other called &#8211; it&#8217;s time to grab the bill and head home. The bar doesn&#8217;t accept Bitcoin nor credit cards. You don&#8217;t have any cash. I paid for you. Later you want to pay me back. I give you my one and only Bitcoin address to receive payment. You send some coins to it. You want to check if the transaction is confirmed. You looked it up on blockchain.info. While you are at it, you click on the address, noticing that every month on the first day I receive the same amount of bitcoins. And the amount isn&#8217;t trivial. Bam! It doesn&#8217;t take a genius to guess that it&#8217;s my salary.</p>
+
+<h2>Security</h2>
+
+<h3>Background</h3>
+
+<p>Your operation system has a weakass <a href="http://en.wikipedia.org/wiki/Random_number_generation">random number generator</a> (fictional-ish, at some point <a href="https://bitcoin.org/en/alert/2013-08-11-android">it was true for Android</a>). You use a single Bitcoin address for everything (fictional, I hope).</p>
+
+<p>Every time you send some coins, a transaction is created and signed with your private key that corresponds to your one and only Bitcoin address. A random number generator is involved to add some randomness to your signature because that makes it secure <a href="http://en.wikipedia.org/wiki/Elliptic_Curve_DSA#Signature_generation_algorithm">according to mathematics</a>.</p>
+
+<h3>The Story</h3>
+
+<p><img src="http://weilu.github.io/images/post/2014-06-08-random.png" title="RFC 1149.5 specifies 4 as the standard IEEE-vetted random number." alt="xkcd random number" /></p>
+
+<p>^^ Your random number generator</p>
+
+<p>Because of your weakass random number generator, your two transactions dated four days apart are signed with the same &#8220;random&#8221; number. Bam! Some smartass figures out your private key by staring at your two transactions for long enough.</p>
+]]></content>
+  </entry>
+  
+  <entry>
+    <title type="html"><![CDATA[Proxy: Have you tried turning it off and on again on Mac OS X?]]></title>
+    <link href="http://weilu.github.io/blog/2013/09/13/proxy-have-you-tried-turning-it-off-and-on-again-on-mac-os-x/"/>
+    <updated>2013-09-13T00:06:00+08:00</updated>
+    <id>http://weilu.github.io/blog/2013/09/13/proxy-have-you-tried-turning-it-off-and-on-again-on-mac-os-x</id>
+    <content type="html"><![CDATA[<p><img src="http://weilu.github.io/images/post/2013-09-13-roy.png" title="Hello IT" alt="roy" /></p>
+
+<p>Say you have an EC2 micro instance set up for convenient access to IP restricted services, like pandora and certain porn sites. Aren&#8217;t you tired of manually setting up the tunnel and editing proxy settings on your mac?</p>
+
+<p>Here you go.</p>
+
+<div><script src='https://gist.github.com/6539993.js?file=proxy.sh'></script>
+<noscript><pre><code># on
+sudo networksetup -setsocksfirewallproxy &quot;Wi-Fi&quot; localhost 1080
+ssh -D 1080 -i ~/.ssh/proxy.pem [remote-user]@[remote-server]
+
+# off
+sudo networksetup -setsocksfirewallproxystate &quot;Wi-Fi&quot; off</code></pre></noscript></div>
+
+
+
+]]></content>
+  </entry>
+  
+  <entry>
+    <title type="html"><![CDATA[DIY-ish Bias Lighting]]></title>
+    <link href="http://weilu.github.io/blog/2013/08/27/diy-ish-bias-lighting/"/>
+    <updated>2013-08-27T21:59:00+08:00</updated>
+    <id>http://weilu.github.io/blog/2013/08/27/diy-ish-bias-lighting</id>
+    <content type="html"><![CDATA[<p>As the legendary Jeff Atwood puts it:</p>
+
+<blockquote><p>We computer geeks like it dark. Really dark. Ideally, we&#8217;d be in a cave. A cave … with an internet connection.</p></blockquote>
+
+<p><img src="http://weilu.github.io/images/post/2013-08-27/social.jpg" title="Social interaction" alt="Social interaction" /></p>
+
+<p>See, being in the dark room isn&#8217;t all about avoiding social interaction. It actually helps me focus. But the brightness of the screen strains my eyes even with the lowest brightness setting on my MacBook. It&#8217;s not just working, even watching a movie &#8211; I could hear my eyes screaming when the scene switches from night time to bright daytime.</p>
+
+<p>So, allow me to quote Jeff Atwood again, together with what he quoted in <a href="http://www.codinghorror.com/blog/2011/11/bias-lighting.html">his post about bias lighting</a></p>
+
+<blockquote><p>You don&#8217;t want total darkness, what you want is some indirect lighting – specifically bias lighting. It helps your eyes compensate and adapt to bright displays.</p>
+
+<blockquote><p>&#8220;[Bias lighting] works because it provides enough ambient light in the viewing area that your pupils don&#8217;t have to dilate as far. This makes for less eyestrain when a flashbang gets thrown your way or a bolt of lightning streams across the screen,&#8221; he told Ars. &#8220;Because the display is no longer the only object emitting light in the room, colors and black levels appear richer than they would in a totally black environment. Bias lighting is key in maintaining a reference quality picture and reducing eye-strain.&#8221;</p></blockquote>
+
+<p>Bias lighting is the happy intersection of indirect lighting and light compensation. It reduces eye strain and produces a better, more comfortable overall computing display experience.</p></blockquote>
+
+<p>I looked up the <a href="http://www.amazon.com/dp/B0053B347M">Antec Halo 6 LED Bias Lighting Kit</a> he recommended. Functionally it looks usable but my biggest problem is that it&#8217;d sticks to the back my screen &#8211; it&#8217;s like getting my MacBook a permanent tattoo&#8230; that glows in the dark. So, no thank you. But it&#8217;s a great idea and dead simple by design &#8211; it&#8217;s just a strip of USB powered LEDs. Why don&#8217;t I make one myself? I can make it better by attaching elastic bands on both ends of the strip instead of the sticky. With that, it can be striped onto any laptop diagonally.</p>
+
+<p>So off I went to <a href="http://goo.gl/maps/BqLG3">Sim Lim Tower</a> on a Sunday morning. Sadly there was only one shop open that sells LEDs at all. And to make it worse, the LED strips they sell require 12V, while USBs only supply 5V. I thought of getting a converter but it just seems unnecessary when there are 12V strips available online. I figured I&#8217;d just order online and wait a couple days. Hopefully by then I haven&#8217;t lost interests in building it. As I was walking out the shop, something caught my eyes:</p>
+
+<p><img class='pair' src="http://weilu.github.io/images/post/2013-08-27/led-lamp-front.jpg" title="LED lamp" alt="LED lamp">
+<img class='pair' src="http://weilu.github.io/images/post/2013-08-27/led-lamp-back.jpg" title="LED lamp" alt="LED lamp"></p>
+
+<p>It fits my needs perfectly despite its awkward appearance. Still workable. I just need to take it apart and give it a better UI. So with SGD$10 I took it home. Here is what it looks like in action out of the box:</p>
+
+<p><img class='pair' src="http://weilu.github.io/images/post/2013-08-27/led-lamp-in-action-back.jpg" title="LED lamp in action" alt="LED lamp in action">
+<img class='pair' src="http://weilu.github.io/images/post/2013-08-27/led-lamp-in-action-front.jpg" title="LED lamp in action" alt="LED lamp in action"></p>
+
+<p>It&#8217;s definitely bright enough but doesn&#8217;t quite stand well as you can see. So here we go:</p>
+
+<ul>
+<li>Step 1: Get rid off what does not work well.</li>
+</ul>
+
+
+<p><img src="http://weilu.github.io/images/post/2013-08-27/remove-things.jpg" title="Remove things" alt="Remove things"></p>
+
+<ul>
+<li>Step 2: Move fast and break things.</li>
+</ul>
+
+
+<p><img src="http://weilu.github.io/images/post/2013-08-27/move-fast.jpg" title="Move fast" alt="Move fast"></p>
+
+<ul>
+<li>Step 3: Put it back together, with some soldering, and pretty designer tapes.</li>
+</ul>
+
+
+<p><img src="http://weilu.github.io/images/post/2013-08-27/put-back.jpg" title="Put back" alt="Put back"></p>
+
+<ul>
+<li>Step 4: Change of plan. I bought flat elastic band to attach to the light. But at this point the light has become too pretty to be attached to the black elastic band. I mean, look at it:</li>
+</ul>
+
+
+<p><img class="pair" src="http://weilu.github.io/images/post/2013-08-27/leaf-front.jpg" title="Leaf front" alt="Leaf front">
+<img class="pair" src="http://weilu.github.io/images/post/2013-08-27/leaf-back.jpg" title="Leaf back" alt="Leaf back"></p>
+
+<p>So I ended up attaching a hook to the back. It hooks up nicely to my Air and is easily detachable:</p>
+
+<p><img src="http://weilu.github.io/images/post/2013-08-27/hook-up-off.jpg" title="Hook up off" alt="Hook up off">
+<img src="http://weilu.github.io/images/post/2013-08-27/hook-up-on.jpg" title="Hook up on" alt="Hook up on">
+<img src="http://weilu.github.io/images/post/2013-08-27/hook-up-front.jpg" title="Hook up front" alt="Hook up front"></p>
+
+<ul>
+<li>Step 5: Put it in use and show off on your blog ;) Here&#8217;s before and after:</li>
+</ul>
+
+
+<p><img class="pair" src="http://weilu.github.io/images/post/2013-08-27/before.jpg" title="Before" alt="Before">
+<img class="pair" src="http://weilu.github.io/images/post/2013-08-27/after.jpg" title="After" alt="After"></p>
+
+<p>I didn&#8217;t make the bias lighting from scratch. I simply gave the USB powered LEDs a new UI that suites my needs and tastes better. All in all, it was a fun mini project =)</p>
+
+<p>*Thanks <a href="https://twitter.com/sillylogger">Tommy</a> and <a href="https://twitter.com/hungryzi">Zi</a> for lending me some of the tools!</p>
+]]></content>
+  </entry>
+  
+  <entry>
+    <title type="html"><![CDATA[Family]]></title>
+    <link href="http://weilu.github.io/blog/2013/08/23/family/"/>
+    <updated>2013-08-23T22:23:00+08:00</updated>
+    <id>http://weilu.github.io/blog/2013/08/23/family</id>
+    <content type="html"><![CDATA[<iframe width="480" height="360" src="http://weilu.github.io//www.youtube.com/embed/w0oyZKR7Pgw" frameborder="0" allowfullscreen> </iframe>
+
+
+<p>Let&#8217;s talk about family. Why not? I am who I am largely because of my family. Here is an incomplete laundry list of what I learnt from my family growing up.</p>
+
+<p>Once we were watching a movie. The girl in the movie said to the guy, I can&#8217;t live without you. My mother turned to me and said, that&#8217;s bullshit. You can live without anybody. Remember that. I thought to myself, that&#8217;s really badass. And that&#8217;s still something I live by today.</p>
+
+<p>I was a quiet kid who asked few questions. It&#8217;s not because I didn&#8217;t have questions, only because I enjoy thinking about them and trying to figure them out myself. Mother knows me. She bought me lots lots of books, subscribed me to sci-fi magazines, the Chinese equivalent of reader&#8217;s digest and more, bought me the Chinese equivalent of legos, lots of them. She likes to tell me how I built amazing castles and ships with them, which I have no memories of&#8230; In my mind, my creations were more like</p>
+
+<p><img src="http://weilu.github.io/images/post/2013-08-23-snowflakes.jpg" title="snowflakes" alt="snowflakes" /></p>
+
+<p>My grandma has always been my role model. She&#8217;s retired now but she had a successful career as a civil engineer. And we are talking about 1960s in China, a college graduate with a degree in civil engineering => my grandma. Then, there weren&#8217;t many people who went to college to start with. She was the youngest and and graduated as one of the only three female students in her class. There are more to my grandma&#8217;s story. It&#8217;s a post by itself. The idea is, she&#8217;s pure awesome.</p>
+
+<p>Grandma taught me patience. She&#8217;s the one I turned to whenever I messed up yarn/thread that I played with. It never failed to surprise me how she ALWAYS managed to untie all the knots doesn&#8217;t matter how badly knotted they are.</p>
+
+<p>Father is my favorite in the family (Sorry Mom). He&#8217;s a serious surgeon at work and a prudent man in general. But to me father means fun and adventures in my childhood.
+We had our stupid games that my mother disapproves of. She said it was childish for my age. But we just laughed and kept on playing until I left home for university.</p>
+
+<p>I learnt earnest from my father. He loves his job. He&#8217;s always accountable and dependable. He does what he thinks is right regardless of the peer pressure.</p>
+
+<p>He also told me that life is like a sine wave: there are ups and downs. When it seems bad and you are sad, you should know that things are about to get better; and when you are on top of the world you should be aware of the downward slope ahead of you. Thinking about the sine wave got me through countless hard times. Thanks dad.</p>
+
+<p><img src="http://weilu.github.io/images/post/2013-08-23-sine.gif" title="sine" alt="sine" /></p>
+
+<p>There are things that parents force their kids to do. It was like hell for the kids at the time, but as the kids grow up they turned out to be thankful for what they were forced to do. A classic example is learning instruments. It&#8217;s hard work. There are hardly any kids who can&#8217;t wait to go to piano lessons at the age of 5. But later they realize that growing up means taking a one-way busy train &#8211; you no longer have time for learning piano and even if you manage to get to it you&#8217;ll never be as good as those who started young.</p>
+
+<p>My parents didn&#8217;t force me to learn any instruments, I can&#8217;t blame them for that. But I can thank my father for forcing me to take up the leadership role since primary school. It was hard for me as I was a quiet and shy kid. But if not for my father I would not be where I am today. I&#8217;ve met so many people who are smarter than me but too shy to lead. It&#8217;s one thing to do your job well, other to excel as a leader. I have yet to excel but being able to step up opens doors. Daring to be ambitious is the first step to putting a dent in the universe.</p>
+
+<p><a href="http://weilu.github.io/small-things-about-father">Appendix: Small things about my father</a></p>
+
+<p>There&#8217;s that. I enjoy doing things that make my family proud just because =)</p>
+]]></content>
+  </entry>
+  
+  <entry>
+    <title type="html"><![CDATA[Back Scratching]]></title>
+    <link href="http://weilu.github.io/blog/2013/05/11/back-scratching/"/>
+    <updated>2013-05-11T18:24:00+08:00</updated>
+    <id>http://weilu.github.io/blog/2013/05/11/back-scratching</id>
+    <content type="html"><![CDATA[<p>Just to be clear, I&#8217;m not at all against the idea of online advertising. I believe that it is the very reason why a large portion of the internet is free.</p>
+
+<p>Advertising, both online and offline, is an excellent business model that benefits business(advertisers), content creators and content consumers: business gets to promote the sales of their service or product; content creators get to distribute their content at lower and even no cost; and content consumers get to consume at lower or no cost. End of the day, <a href="http://www.intertic.org/Policy%20Papers/Evans.pdf">we have advertising to thank for the survival of the news, magazine, radio and TV industries.</a></p>
+
+<p>Back on the grid, think about Google. I don&#8217;t know about you but I can&#8217;t imagine a life without Google search, Gmail, Google maps and YouTube. The free and excellent services Google provides would not be possible without money. <a href="http://investor.google.com/financial/tables.html">Last year, 95% of Google&#8217;s revenue comes from online advertising</a>. Thank you online advertising.</p>
+
+<p><img src="http://weilu.github.io/images/post/2013-05-11-back-scratching.jpg" title="back scratching" alt="back scratching" /></p>
+
+<p>It&#8217;s all about scratching each other&#8217;s back. Google helps me find the relevant information I&#8217;m searching for, for free. And they get paid by the advertisers for displaying ads to me. Fair and square. I don&#8217;t mind the &#8220;sponsored links&#8221; showing up first in my search results, as long as they are 1) clearly labelled so I don&#8217;t mistake them for vanilla search results 2) always relevant to my search &#8211; I might even click on them sometimes.</p>
+
+<p>All that being said, I have a confession to make: today is the day I installed <a href="https://chrome.google.com/webstore/detail/screwads-block-skip-remov/mmbnjoljpgkhiaicaejkdcjbfjknipnc">a chrome extension to skip YouTube in-video ads</a>.</p>
+
+<p><img src="http://weilu.github.io/images/post/2013-05-11-remove-youtube-ad.png" title="Remove YouTube Ad" alt="remove youtube ad" /></p>
+
+<p>Do I feel bad? Not really. Inserting an ad in front a video I want to watch disrupts my workflow. It&#8217;s broken user experience right there. How relevant normally is the ad in front of my video? Do I feel like buying a car when clicking on a cat video? No, thanks.</p>
+
+<p><img src="http://weilu.github.io/images/post/2013-05-11-grumpy-cat.jpg" title="Grumpy Cat" alt="grumpy cat" /></p>
+
+<p>So yes, when it feels like that YouTube stops scratching my back, I stop scratching theirs. They probably won&#8217;t be charging the advertisers since the ads aren&#8217;t displayed.</p>
+
+<p>The point is, I&#8217;m willing to scratch your back up to a certain point. A disrupted workflow is beyond that point.</p>
+]]></content>
+  </entry>
+  
+  <entry>
+    <title type="html"><![CDATA[Conditionally Switching off Transactional Fixtures]]></title>
+    <link href="http://weilu.github.io/blog/2012/11/10/conditionally-switching-off-transactional-fixtures/"/>
+    <updated>2012-11-10T13:10:00+08:00</updated>
+    <id>http://weilu.github.io/blog/2012/11/10/conditionally-switching-off-transactional-fixtures</id>
+    <content type="html"><![CDATA[<p>Rspec gives us the ability to use transactional fixtures:</p>
+
+<figure class='code'> <div class="highlight"><table><tr><td class="gutter"><span class='line-number'>1</span>
+</td><td class='code'><pre><code class='ruby'><span class='line'><span class="n">config</span><span class="o">.</span><span class="n">use_transactional_fixtures</span> <span class="o">=</span> <span class="kp">true</span>
+</span></code></pre></td></tr></table></div></figure>
+
+
+<p>We like it because it makes the test fast by opening a database transaction at the beginning of a test and rolling it back at the end of it. Nothing gets written into database. But, this does not work with Capybara javascript tests (Such a long name, I&#8217;m going to call it selenium specs from now on just for simplicity sake and legacy reasons. And no, I don&#8217;t prefer selenium as a driver over Capybara-webkit. Quite the opposite.) because they use a separate server thread, which means the transaction is not visible to the client. So intuitively we wonder, is there a way to turn off transactional fixtures only for selenium specs? <a href="http://stackoverflow.com/questions/3853098/turn-off-transactional-fixtures-for-one-spec-with-rspec-2">A quick googling</a> suggests that one should simply turn off transactional fixtures and use database cleaner for all the tests. I go</p>
+
+<p><img src="http://weilu.github.io/images/post/2012-11-10-no.jpg" alt="no" /></p>
+
+<p>I&#8217;d use <a href="https://github.com/bmabey/database_cleaner">database cleaner</a> to truncate my tables after/before each selenium specs but definitely not for every non-selenium specs like model and controller spec. What about using database cleaner&#8217;s transaction strategy for those? I could&#8230; And more on that later. But hey if rspec can talk to active record to enable transactional fixtures directly why have someone else do it? So here it goes:</p>
+
+<div><script src='https://gist.github.com/4017097.js?file=spec_helper.rb'></script>
+<noscript><pre><code>RSpec.configure do |config|
+  config.use_transactional_fixtures = true
+  config.include SeleniumHelper, :type =&gt; :request
+  
+  config.before(:suite) do
+    DatabaseCleaner.strategy = :truncation
+  end
+
+  config.before(:each, js: true) do
+    DatabaseCleaner.start
+  end
+
+  config.after(:each, js: true) do
+    DatabaseCleaner.clean
+  end
+end</code></pre></noscript></div>
+
+
+
+
+<div><script src='https://gist.github.com/4017097.js?file=selenium_helper.rb'></script>
+<noscript><pre><code># support/selenium_helper.rb
+
+module SeleniumHelper
+  def self.included(base)
+    base.class_eval do
+      self.use_transactional_fixtures = false if metadata[:js]
+    end
+  end
+end</code></pre></noscript></div>
+
+
+<p>To use it, you need to put the js tag on feature(alias of <em>describe</em>) instead of the scenario(alias of <em>it</em>), because it is simply too late once you are in the space of a scenario. For the same reason, you can&#8217;t turn it off in a conditional <em>before(:each)</em> hook in spec helper.</p>
+
+<div><script src='https://gist.github.com/4017097.js?file=edit_post_spec.rb'></script>
+<noscript><pre><code># requests/edit_post_spec.rb
+
+require 'spec_helper'
+
+feature 'editing a post', js: true do
+  let(:post) { create :post }
+  let(:user) { post.creator }
+
+  before { sign_in user }
+
+  scenario 'creator attaches an image to a post' do
+    # user attaches image and expects to see it after submit
+  end
+end</code></pre></noscript></div>
+
+
+<p>*Credit: the above gist was derived from code written by <a href="https://twitter.com/mmazur">Mike Mazur</a> and I as a pair.</p>
+
+<p>So I was pretty pleased with the above solution and I went ahead made the gist for my future self. But, then I asked myself again: what about database cleaner&#8217;s <em>transaction</em> strategy? How does it work differently from active record&#8217;s <em>use_transactional_fixtures</em> which rspec essentially use? After a bit of code reading, I realized the answer is&#8230; it isn&#8217;t any different. <a href="https://github.com/rails/rails/blob/master/activerecord/lib/active_record/fixtures.rb#L846">Here is how active record does it</a>. <a href="https://github.com/bmabey/database_cleaner/blob/master/lib/database_cleaner/active_record/transaction.rb">Here is how database cleaner does it</a>. <a href="http://stackoverflow.com/questions/13234454/test-speed-activerecord-use-transactional-fixtures-vs-databasecleaner-strategy">Here is me trying to make sure I&#8217;m not crazy after reading what I read</a>.</p>
+
+<p>It&#8217;s a nice thing to figure out how to turn off transactional fixtures conditionally. But end of the day, it is not necessary. So yea, Interwebz is right &#8211; just turn off transactional fixtures all together and use database cleaner. Here is to my future self and anyone who ever wonders how to turn off transactional fixtures for selenium specs only:</p>
+
+<div><script src='https://gist.github.com/4050393.js?file='></script>
+<noscript><pre><code>RSpec.configure do |config|
+  config.use_transactional_fixtures = false
+
+  config.before(:suite) do
+    DatabaseCleaner.clean_with :truncation
+  end
+
+  config.before(:each) do
+    if example.metadata[:js]
+      DatabaseCleaner.strategy = :truncation
+    else
+      DatabaseCleaner.strategy = :transaction
+    end
+    DatabaseCleaner.start
+  end
+
+  config.after(:each) do
+    DatabaseCleaner.clean
+  end
+end</code></pre></noscript></div>
+
+
+
+]]></content>
+  </entry>
+  
+  <entry>
+    <title type="html"><![CDATA[The Peace of Mind Project]]></title>
+    <link href="http://weilu.github.io/blog/2012/10/27/the-peace-of-mind-project/"/>
+    <updated>2012-10-27T15:11:00+08:00</updated>
+    <id>http://weilu.github.io/blog/2012/10/27/the-peace-of-mind-project</id>
+    <content type="html"><![CDATA[<p>Peace of mind is always underrated in my opinion. Believing it hasn&#8217;t stopped me from underrating it though. It&#8217;s just not enough. &#8220;&#8230;this life will hit you hard in the face, wait for you to get back up just so it can kick you in the stomach. But getting the wind knocked out of you is the only way to remind your lungs how much they like the taste of air.&#8221;</p>
+
+<iframe src="http://embed.ted.com/talks/sarah_kay_if_i_should_have_a_daughter.html" width="560" height="315" frameborder="0" scrolling="no" webkitAllowFullScreen mozallowfullscreen allowFullScreen></iframe>
+
+
+<p>How? Different story and not the point.</p>
+
+<h2>Why peace of mind?</h2>
+
+<p>Waking up monday morning, realizing I was almost unfit for work. The doctor suggested me to take 2 days off. So I reluctantly did so. It might as well be the worthiest sick leaves I&#8217;ve ever taken. Looking back at the past two and half months, I have been busy trying hard to be happy &#8211; going to dance classes at least 3 days a week; said yes to all possible social opportunities; the rest of my non-working hours are almost all used for catching up with old friends. Happy finally? I asked myself. I couldn&#8217;t say yes with a straight face. It felt&#8230; fast. And I&#8217;m exhausted. The 2-day leave was my only real break for 2+ months. Just like that, I decided that not taking myself too seriously isn&#8217;t enough; doing things that (I think) makes myself happy isn&#8217;t enough; I want my peace of mind.</p>
+
+<h2>What makes me feel calm and in peace?</h2>
+
+<ul>
+<li>On my way home at 1am after submitting <a href="https://github.com/travishaynes/Google-Webfonts-Helper/pull/4">a pull request</a></li>
+<li>Reading a book</li>
+<li>Scrolling through my twitter feeds, with Ke, talking to mum and dad on phone, playing Alejandro on my ukulele</li>
+<li>Standing around with wine in hand after <a href="http://lioncityhash.com/">hash run</a></li>
+<li>Lying on bed after a productive working day</li>
+<li>Taking care of myself(simple things like getting a new pair of earrings, applying face masks and painting my toe nails pink)</li>
+<li>Listening to this American life</li>
+<li>Watching <a href="http://www.youtube.com/user/sxephil">phillyd show</a></li>
+<li>Writing a blog entry</li>
+</ul>
+
+
+<p><img src="http://weilu.github.io/images/post/2012-10-27-twitter-earrings.JPG" title="new twitter earrings" alt="new twitter earrings" /></p>
+
+<h2>What makes me happy?</h2>
+
+<ul>
+<li>Dancing</li>
+<li>Hash runs</li>
+<li>Attending fancy events</li>
+<li>Road trips</li>
+<li>Knowing that my proposal to speak on <a href="http://rubyconf.tw/2012/">Taiwan RubyConf</a> is accepted</li>
+<li>Hanging out with friends.</li>
+</ul>
+
+
+<p><img src="http://weilu.github.io/images/post/2012-10-27-fancy-event.JPG" title="237th US Navy Ball, Singapore" alt="237th US Navy Ball, Singapore" /></p>
+
+<h2>What&#8217;s the plan?</h2>
+
+<p>Take some time from doing things that make me happy to spend on things that bring me peace.</p>
+
+<ul>
+<li>As I am typing this post, Derrick&#8217;s email regarding <a href="https://github.com/Kicksend/mailcheck">mailcheck</a> arrived in my inbox. I&#8217;m going to do my homework after putting this post up. If things pan out, more time on coding.</li>
+<li>Among all my projects, I&#8217;d like to pick up <a href="https://github.com/weilu/wiki-near-me">wiki near me</a> after I finish up <a href="https://github.com/weilu/mosaic">mosaic&#8217;s google calendar</a> (*shameface* that really should have been done long time ago).</li>
+<li>Friday hash run is fun but is also very time consuming &#8211; it takes away 1 work hour + all after hours of Friday. Not to mention it is also physically demanding. So try to be selective and skip the on-on. (Seems like the criteria are jungle runs + less preferable choice of the on-on restaurant).</li>
+<li>Daily, 2 hours of reading books 1 hour for the tubes. Those are lower bounds, which means hanging/going out and dancing has a cap of ~2 hours on a regular weekday that I choose not to code after work.</li>
+<li>Eat more vegetables and fruits, drink less. Treat your body.</li>
+</ul>
+
+
+<p><img src="http://weilu.github.io/images/post/2012-10-27-books-im-reading.JPG" title="Books I'm reading" alt="Books I'm reading" /></p>
+
+<p>So, the peace of mind project starts today. I&#8217;m going to experiment it until the end of November, during which I will be on holidays in Australia from 11/8 - 11/17. Will report back around 12/1 ⩲2 days.</p>
+
+<p>Peace</p>
+
+<p><img src="http://weilu.github.io/images/post/2012-10-27-keep-calm-and-carry-on.png" title="Keep calm and carry on" alt="Keep calm and carry on" /></p>
+]]></content>
+  </entry>
+  
+  <entry>
+    <title type="html"><![CDATA[Seriously, Stop Being So Serious]]></title>
+    <link href="http://weilu.github.io/blog/2012/07/21/seriously/"/>
+    <updated>2012-07-21T16:47:00+08:00</updated>
+    <id>http://weilu.github.io/blog/2012/07/21/seriously</id>
+    <content type="html"><![CDATA[<p>So here I am, admitting my failures. I guess this is when things will be taking a turn. My biggest problem: being treating myself way way way too seriously. That complicates things, and worst of all, makes myself feel hurt and sad. It&#8217;s not that I didn&#8217;t know one shouldn&#8217;t treat oneself too seriously. I learnt that while I was in the bay area 2 years ago. I remember how I was mocking those who were serious when I just came back to Singapore. I just forgot. I guess I underestimated the power of peer pressure. Anyways, I&#8217;m sooooo glad that this crucial motto is rediscovered, thanks to Jitterbug Perfume, thanks to Tom Robbins the author.</p>
+
+<p><img src="http://weilu.github.io/images/post/2012-07-21-jitterbug-perfume.jpg" title="Jitterbug Perfume" alt="Jitterbug Perfume" /></p>
+
+<p>I finished the book this morning. It was no doubt an amazing book, easily my top 3 together with <em>About a Boy</em> and <em>the Help</em>. (Given I haven&#8217;t read that many books whatsoever) I was sad and all and couldn&#8217;t sleep last night until 3am. So after I finished the Jitterbug Perfume this morning and threw my laundry in the washing machine, I made my way to my favorite Starbucks in the neighborhood and start reading <em>The Well-Grounded Rubyist</em>. Somehow a quote from the <em>Jitterbug Perfume</em> keeps on bugging me. Something about bad habits. So I pull out my phone and looked it up. I ended up with not just the quote I was looking for, but also many more amazingly witty quotes from Tom Robbins. Here:</p>
+
+<blockquote><p>“People used to die from germs. Now they died from bad habits. That was what Dr. Dannyboy said. Heart disease was caused by bad personal habits, cancer was caused by bad industrial habits, war was caused by bad political habits. Dannyboy believed that even old age was a habit. And habits could be broken.” ― Tom Robbins, Jitterbug Perfume</p>
+
+<p>“People tend the take everything too seriously. Especially themselves. Yep. And that&#8217;s probably what makes &#8216;em scared and hurt so much of the time. Life is too serious to take that seriously.” ― Tom Robbins</p>
+
+<p>“When we&#8217;re incomplete, we&#8217;re always searching for somebody to complete us. When, after a few years or a few months of a relationship, we find that we&#8217;re still unfulfilled, we blame our partners and take up with somebody more promising. This can go on and on&#8211;series polygamy&#8211;until we admit that while a partner can add sweet dimensions to our lives, we, each of us, are responsible for our own fulfillment. Nobody else can provide it for us, and to believe otherwise is to delude ourselves dangerously and to program for eventual failure every relationship we enter.” ― Tom Robbins</p>
+
+<p>“Our lives are not as limited as we think they are; the world is a wonderfully weird place; consensual reality is significantly flawed; no institution can be trusted, but love does work; all things are possible; and we all could be happy and fulfilled if we only had the guts to be truly free and the wisdom to shrink our egos and quit taking ourselves so damn seriously.” ― Tom Robbins</p>
+
+<p>“We are our own dragons as well as our own heroes, and we have to rescue ourselves from ourselves.” ― Tom Robbins, Still Life with Woodpecker</p>
+
+<p>“There is no such thing as a weird human being, It&#8217;s just that some people require more understanding than others.” ― Tom Robbins</p>
+
+<p>“The unhappy person resents it when you try to cheer him up, because that means he has to stop dwelling on himself and start paying attention to the universe. Unhappiness is the ultimate form of self-indulgence. When you&#8217;re unhappy, you get to pay a lot of attention to yourself. You get to take yourself oh so very seriously.” ― Tom Robbins, Jitterbug Perfume</p>
+
+<p>“It&#8217;s never too late to have a happy childhood.” ― Tom Robbins, Still Life with Woodpecker</p>
+
+<p>“Curiosity, especially intellectual inquisitiveness, is what separates the truly alive from those who are merely going through the motions.” ― Tom Robbins</p>
+
+<p>“You&#8217;ve heard of people calling in sick. You may have called in sick a few times yourself. But have you ever thought about calling in well?</p>
+
+<p>It&#8217;d go like this: You&#8217;d get the boss on the line and say, &#8220;Listen, I&#8217;ve been sick ever since I started working here, but today I&#8217;m well and I won&#8217;t be in anymore.&#8221; Call in well.” ― Tom Robbins</p>
+
+<p>“You risked your life, but what else have you ever risked? Have you risked disapproval? Have you ever risked economic security? Have you ever risked a belief? I see nothing particularly courageous about risking one&#8217;s life. So you lose it, you go to your hero&#8217;s heaven and everything is milk and honey &#8216;til the end of time. Right? You get your reward and suffer no earthly consequences. That&#8217;s not courage. Real courage is risking something that might force you to rethink your thoughts and suffer change and stretch consciousness. Real courage is risking one&#8217;s clichés.” ― Tom Robbins, Another Roadside Attraction</p></blockquote>
+
+<p>The super ultra point is, I should quit taking myself too seriously and Tom Robbins is pretty damn awesome. I should read more books of his =) Peace!</p>
+
+<p>*Quotes references: <a href="http://www.goodreads.com/author/quotes/197.Tom_Robbins">goodreads</a>,
+<a href="http://secretshelflife.blogspot.sg/2011/04/jitterbug-perfume.html">secretshelflife</a></p>
+]]></content>
+  </entry>
+  
+  <entry>
+    <title type="html"><![CDATA[Just Loop on]]></title>
+    <link href="http://weilu.github.io/blog/2012/07/03/just-loop-on/"/>
+    <updated>2012-07-03T23:52:00+08:00</updated>
+    <id>http://weilu.github.io/blog/2012/07/03/just-loop-on</id>
+    <content type="html"><![CDATA[<p>I can&#8217;t be the only one who listens to a song on loop. White waiting for Tommy and Zi to wrap up work, here is something embarrassingly simple that does the looping, if you uses an audio tag and happen to have Zepto/jQuery like I do that is.</p>
+
+<figure class='code'> <div class="highlight"><table><tr><td class="gutter"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+<span class='line-number'>4</span>
+</td><td class='code'><pre><code class='javascript'><span class='line'><span class="nx">$</span><span class="p">(</span><span class="s1">&#39;audio&#39;</span><span class="p">).</span><span class="nx">on</span><span class="p">(</span><span class="s1">&#39;ended&#39;</span><span class="p">,</span> <span class="kd">function</span><span class="p">(){</span>
+</span><span class='line'>  <span class="k">this</span><span class="p">.</span><span class="nx">currentTime</span> <span class="o">=</span> <span class="mi">0</span><span class="p">;</span>
+</span><span class='line'>  <span class="k">this</span><span class="p">.</span><span class="nx">play</span><span class="p">();</span>
+</span><span class='line'><span class="p">})</span>
+</span></code></pre></td></tr></table></div></figure>
+
+]]></content>
+  </entry>
+  
+  <entry>
+    <title type="html"><![CDATA[Hurricane Katrina]]></title>
+    <link href="http://weilu.github.io/blog/2012/07/02/hurricane-katrina/"/>
+    <updated>2012-07-02T21:20:00+08:00</updated>
+    <id>http://weilu.github.io/blog/2012/07/02/hurricane-katrina</id>
+    <content type="html"><![CDATA[<p>This is a story about the song Hurricane Katrina by Nadeah. The bottom line is that I love the song, but I didn&#8217;t buy the song and I&#8217;m not proud of it.</p>
+
+<p>First I heard the song on <a href="http://www.abc.net.au/triplej/roots/playlist/default.htm">Triple J</a> How did I learn about such an awesome Australian radio station? That&#8217;s another story goes back to <a href="http://railscamps.com/">Rails Camp</a>@<a href="http://goo.gl/maps/NoYP">Springbrook</a> and a nice gentlemen who goes by <a href="https://twitter.com/#!/MarkRatjens">@MarkRatjens</a> on Twitter =)</p>
+
+<p>The song instantly got to me. My first reaction was to go on youtube trying to search for it. There was a couple live versions. I was of course dissatisfied. So next up vimeo.com yet no studio version. But the silver lining is that I found another cute and apparently more famous song of Nadeah&#8217;s : Odile</p>
+
+<iframe src="http://player.vimeo.com/video/31532711" width="500" height="281" frameborder="0" webkitAllowFullScreen mozallowfullscreen allowFullScreen></iframe>
+
+
+<p>So after playing Odile for a couple times I decided the album &#8220;Venus Gets Even&#8221; which both songs are from is what I want.</p>
+
+<p>ME WANTZ:
+<img src="http://weilu.github.io/images/post/2012-07-02-venus-gets-even.jpg" title="[venus gets even]" ></p>
+
+<p>So being a responsible good citizen as I am, I went to iTunes Store. Searched and got: <em>Your search had no results.</em> Hmmm fine. Googled and got to Nadeah&#8217;s official site. Sweet, I can &#8216;buy online&#8217; or &#8216;by on iTunes&#8217;. Let&#8217;s try iTunes again, since it would not require shipping of any sort. There I was, iTunes Store France&#8230; Never mind, I still know where the buy button is. So I clicked and got: <em>This Apple ID is only valid for purchases in the U.S. iTunes Store. You will be switched to that Store. Try your purchase again.</em> And redirected to iTunes Store home page I was. Back to square one. Fine I&#8217;ll have it shipped. So I filled in my shipping details, was redirected to paypal, logged in and bam! something like <em>The merchant does not ship to your country.</em> And redirected I was back on Nadeah&#8217;s homepage. Why does nobody want to take my money?!</p>
+
+<p><img src='http://weilu.github.io/images/post/2012-07-02-rage-face.png' title='rageface' class='plain'/></p>
+
+<p>That&#8217;s it, torrent time. There we go: 0 seed and 0 leech. You know how it works - the more you can&#8217;t have it, the more you desire it. So the only decent version I have is from streaming from Triple J. If only I could record it&#8230;</p>
+
+<p>Googling mac audio recorder gives me <a href="http://audacity.sourceforge.net/">Audacity</a>. Following the <a href="http://manual.audacityteam.org/help/manual/man/tutorial_recording_computer_playback_on_mac.html">tutorial</a> I had my audio output redirect to <a href="http://cycling74.com/soundflower-landing-page/">soundflower</a> and simply by playing the time range of the streaming on Triple J the song was recorded. With a bit of cleaning up like some cropping and fading out the last bit. Here is what I got:</p>
+
+<p><audio controls="controls">
+  <source src="http://weilu.github.io/media/Hurricane_Katrina.mp3" type="audio/mp3" />
+  Awww too bad your browser does not support the audio tag.
+</audio></p>
+
+<p>Enjoy. I guess that&#8217;s what they call a guilty pleasure.</p>
+
+<p>*disclaimer: I do not own the song. The song is not for distribution. It&#8217;s only for sharing because it is beautiful.</p>
+]]></content>
+  </entry>
+  
+  <entry>
+    <title type="html"><![CDATA[Gmail's Little Big Detail]]></title>
+    <link href="http://weilu.github.io/blog/2012/06/05/gmails-little-big-detail/"/>
+    <updated>2012-06-05T22:33:00+08:00</updated>
+    <id>http://weilu.github.io/blog/2012/06/05/gmails-little-big-detail</id>
+    <content type="html"><![CDATA[<p><img src="http://weilu.github.io/images/post/2012-06-05-gmail-attached.jpg" title="[gmail no document attached alert]" ></p>
+
+<p>Gone are the days when you thought you&#8217;ve sent out an important piece of document to someone and only discovered an hour later that you forgot to attache the file. *facepalm* Now gmail searches for word like &#8220;is attached&#8221; in your email content, and alerts you when you hit the send button if there&#8217;s no attachment to the email. That&#8217;s a nice little big detail there. Thanks gmail =)</p>
+]]></content>
+  </entry>
+  
+  <entry>
+    <title type="html"><![CDATA[A baker named Baker in the Memory Palace watching Venus walking by]]></title>
+    <link href="http://weilu.github.io/blog/2012/06/04/a-baker-named-baker-in-the-memory-palace-watching-venus-walking-by/"/>
+    <updated>2012-06-04T23:29:00+08:00</updated>
+    <id>http://weilu.github.io/blog/2012/06/04/a-baker-named-baker-in-the-memory-palace-watching-venus-walking-by</id>
+    <content type="html"><![CDATA[<p>It started with this talk by Joshua Foer on how one can use techniques like <em>the memory palace</em> to cultivate his/her memory to prepare speeches, remember random numbers and in his case, won a memory competition. I like his final remark about how the convenience provided by technology trained us to be too lazy to remember. But life is short and we are the sum of our memories. We need to be the kind of person who remembers to remember.</p>
+
+<object width="526" height="374">
+<param name="movie" value="http://video.ted.com/assets/player/swf/EmbedPlayer.swf"></param>
+<param name="allowFullScreen" value="true" />
+<param name="allowScriptAccess" value="always"/>
+<param name="wmode" value="transparent"></param>
+<param name="bgColor" value="#ffffff"></param>
+<param name="flashvars" value="vu=http://video.ted.com/talk/stream/2012/Blank/JoshuaFoer_2012-320k.mp4&su=http://images.ted.com/images/ted/tedindex/embed-posters/JoshuaFoer_2012-embed.jpg&vw=512&vh=288&ap=0&ti=1443&lang=&introDuration=15330&adDuration=4000&postAdDuration=830&adKeys=talk=joshua_foer_feats_of_memory_anyone_can_do;year=2012;theme=how_the_mind_works;theme=numbers_at_play;theme=ted_under_30;event=TED2012;tag=brain;tag=culture;tag=memory;tag=neuroscience;tag=science;&preAdTag=tconf.ted/embed;tile=1;sz=512x288;" />
+<embed src="http://video.ted.com/assets/player/swf/EmbedPlayer.swf" pluginspace="http://www.macromedia.com/go/getflashplayer" type="application/x-shockwave-flash" wmode="transparent" bgColor="#ffffff" width="526" height="374" allowFullScreen="true" allowScriptAccess="always" flashvars="vu=http://video.ted.com/talk/stream/2012/Blank/JoshuaFoer_2012-320k.mp4&su=http://images.ted.com/images/ted/tedindex/embed-posters/JoshuaFoer_2012-embed.jpg&vw=512&vh=288&ap=0&ti=1443&lang=&introDuration=15330&adDuration=4000&postAdDuration=830&adKeys=talk=joshua_foer_feats_of_memory_anyone_can_do;year=2012;theme=how_the_mind_works;theme=numbers_at_play;theme=ted_under_30;event=TED2012;tag=brain;tag=culture;tag=memory;tag=neuroscience;tag=science;&preAdTag=tconf.ted/embed;tile=1;sz=512x288;"></embed>
+</object>
+
+
+<p>It&#8217;s a great talk. Having a cultivated memory is not only important but also pretty handy. As sad and visually unpleasant the original memory palace story is, the technique actually sounded pretty fun. So I was reading about the <a href="http://en.wikipedia.org/wiki/Transit_of_Venus," title="transit of Venus">transit of Venus</a>. Here is a little application:</p>
+
+<blockquote><p>In forever 21, a 5-year-old boy is holding a full mark paper(100/100), while his young beautiful mother (who&#8217;s wearing a pair of very big glasses) reluctantly walks away from a big big round mirror to the fitting room.</p></blockquote>
+
+<p>That translate to:</p>
+
+<blockquote><p>Transits of Venus occur in a pattern that repeats every 243 years, with pairs of transits eight years apart separated by long gaps of 121.5 years and 105.5 years.</p></blockquote>
+]]></content>
+  </entry>
+  
+</feed>

@@ -1,0 +1,289 @@
+
+<!DOCTYPE html>
+<!--[if IEMobile 7 ]><html class="no-js iem7"><![endif]-->
+<!--[if lt IE 9]><html class="no-js lte-ie8"><![endif]-->
+<!--[if (gt IE 8)|(gt IEMobile 7)|!(IEMobile)|!(IE)]><!--><html class="no-js" lang="en"><!--<![endif]-->
+<head>
+  <meta charset="utf-8">
+  <title>Conditionally Switching off Transactional Fixtures - What she said</title>
+  <meta name="author" content="Wei Lu">
+
+  
+  <meta name="description" content="Rspec gives us the ability to use transactional fixtures: 1
+config.use_transactional_fixtures = true We like it because it makes the test fast by &hellip;">
+  
+
+  <!-- http://t.co/dKP3o1e -->
+  <meta name="HandheldFriendly" content="True">
+  <meta name="MobileOptimized" content="320">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+
+  
+  <link rel="canonical" href="http://weilu.github.io/blog/2012/11/10/conditionally-switching-off-transactional-fixtures">
+  <link href="/favicon.png" rel="icon">
+  <link href="/stylesheets/screen.css" media="screen, projection" rel="stylesheet" type="text/css">
+  <script src="/javascripts/modernizr-2.0.js"></script>
+  <script src="/javascripts/ender.js"></script>
+  <script src="/javascripts/octopress.js" type="text/javascript"></script>
+  <link href="/atom.xml" rel="alternate" title="What she said" type="application/atom+xml">
+  <!--Fonts from Google"s Web font directory at http://google.com/webfonts -->
+<link href="http://fonts.googleapis.com/css?family=PT+Serif:regular,italic,bold,bolditalic" rel="stylesheet" type="text/css">
+<link href="http://fonts.googleapis.com/css?family=PT+Sans:regular,italic,bold,bolditalic" rel="stylesheet" type="text/css">
+
+  
+  <script type="text/javascript">
+    var _gaq = _gaq || [];
+    _gaq.push(['_setAccount', 'UA-32174789-1']);
+    _gaq.push(['_trackPageview']);
+
+    (function() {
+      var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
+      ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
+      var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
+    })();
+  </script>
+
+
+</head>
+
+<body   class="no-sidebar"  >
+  <header role="banner"><hgroup>
+  <h1><a href="/">What she said</a></h1>
+  
+</hgroup>
+
+</header>
+  <nav role="navigation">
+  
+<form action="http://google.com/search" method="get">
+  <fieldset role="search">
+    <input type="hidden" name="q" value="site:weilu.github.io" />
+    <input class="search" type="text" name="q" results="0" placeholder="Search"/>
+  </fieldset>
+</form>
+  
+<ul class="main-navigation">
+  <li><a href="/">Blog</a></li>
+  <!-- <li><a href="/blog/archives">Archives</a></li> -->
+  <li><a href="/about">About</a></li>
+</ul>
+
+</nav>
+  <div id="main">
+    <div id="content">
+      <div>
+<article class="hentry" role="article">
+  
+  <header>
+    
+      <h2 class="entry-title">Conditionally Switching off Transactional Fixtures</h2>
+    
+    
+      <p class="meta">
+        
+
+
+
+
+
+
+
+
+  
+
+
+<time datetime="2012-11-10T13:10:00+08:00" pubdate data-updated="true">Nov 10<span>th</span>, 2012</time>
+        
+      </p>
+    
+  </header>
+
+
+<div class="entry-content"><p>Rspec gives us the ability to use transactional fixtures:</p>
+
+<figure class='code'> <div class="highlight"><table><tr><td class="gutter"><span class='line-number'>1</span>
+</td><td class='code'><pre><code class='ruby'><span class='line'><span class="n">config</span><span class="o">.</span><span class="n">use_transactional_fixtures</span> <span class="o">=</span> <span class="kp">true</span>
+</span></code></pre></td></tr></table></div></figure>
+
+
+<p>We like it because it makes the test fast by opening a database transaction at the beginning of a test and rolling it back at the end of it. Nothing gets written into database. But, this does not work with Capybara javascript tests (Such a long name, I&#8217;m going to call it selenium specs from now on just for simplicity sake and legacy reasons. And no, I don&#8217;t prefer selenium as a driver over Capybara-webkit. Quite the opposite.) because they use a separate server thread, which means the transaction is not visible to the client. So intuitively we wonder, is there a way to turn off transactional fixtures only for selenium specs? <a href="http://stackoverflow.com/questions/3853098/turn-off-transactional-fixtures-for-one-spec-with-rspec-2">A quick googling</a> suggests that one should simply turn off transactional fixtures and use database cleaner for all the tests. I go</p>
+
+<p><img src="/images/post/2012-11-10-no.jpg" alt="no" /></p>
+
+<p>I&#8217;d use <a href="https://github.com/bmabey/database_cleaner">database cleaner</a> to truncate my tables after/before each selenium specs but definitely not for every non-selenium specs like model and controller spec. What about using database cleaner&#8217;s transaction strategy for those? I could&#8230; And more on that later. But hey if rspec can talk to active record to enable transactional fixtures directly why have someone else do it? So here it goes:</p>
+
+<div><script src='https://gist.github.com/4017097.js?file=spec_helper.rb'></script>
+<noscript><pre><code>RSpec.configure do |config|
+  config.use_transactional_fixtures = true
+  config.include SeleniumHelper, :type =&gt; :request
+  
+  config.before(:suite) do
+    DatabaseCleaner.strategy = :truncation
+  end
+
+  config.before(:each, js: true) do
+    DatabaseCleaner.start
+  end
+
+  config.after(:each, js: true) do
+    DatabaseCleaner.clean
+  end
+end</code></pre></noscript></div>
+
+
+
+
+<div><script src='https://gist.github.com/4017097.js?file=selenium_helper.rb'></script>
+<noscript><pre><code># support/selenium_helper.rb
+
+module SeleniumHelper
+  def self.included(base)
+    base.class_eval do
+      self.use_transactional_fixtures = false if metadata[:js]
+    end
+  end
+end</code></pre></noscript></div>
+
+
+<p>To use it, you need to put the js tag on feature(alias of <em>describe</em>) instead of the scenario(alias of <em>it</em>), because it is simply too late once you are in the space of a scenario. For the same reason, you can&#8217;t turn it off in a conditional <em>before(:each)</em> hook in spec helper.</p>
+
+<div><script src='https://gist.github.com/4017097.js?file=edit_post_spec.rb'></script>
+<noscript><pre><code># requests/edit_post_spec.rb
+
+require 'spec_helper'
+
+feature 'editing a post', js: true do
+  let(:post) { create :post }
+  let(:user) { post.creator }
+
+  before { sign_in user }
+
+  scenario 'creator attaches an image to a post' do
+    # user attaches image and expects to see it after submit
+  end
+end</code></pre></noscript></div>
+
+
+<p>*Credit: the above gist was derived from code written by <a href="https://twitter.com/mmazur">Mike Mazur</a> and I as a pair.</p>
+
+<p>So I was pretty pleased with the above solution and I went ahead made the gist for my future self. But, then I asked myself again: what about database cleaner&#8217;s <em>transaction</em> strategy? How does it work differently from active record&#8217;s <em>use_transactional_fixtures</em> which rspec essentially use? After a bit of code reading, I realized the answer is&#8230; it isn&#8217;t any different. <a href="https://github.com/rails/rails/blob/master/activerecord/lib/active_record/fixtures.rb#L846">Here is how active record does it</a>. <a href="https://github.com/bmabey/database_cleaner/blob/master/lib/database_cleaner/active_record/transaction.rb">Here is how database cleaner does it</a>. <a href="http://stackoverflow.com/questions/13234454/test-speed-activerecord-use-transactional-fixtures-vs-databasecleaner-strategy">Here is me trying to make sure I&#8217;m not crazy after reading what I read</a>.</p>
+
+<p>It&#8217;s a nice thing to figure out how to turn off transactional fixtures conditionally. But end of the day, it is not necessary. So yea, Interwebz is right &#8211; just turn off transactional fixtures all together and use database cleaner. Here is to my future self and anyone who ever wonders how to turn off transactional fixtures for selenium specs only:</p>
+
+<div><script src='https://gist.github.com/4050393.js?file='></script>
+<noscript><pre><code>RSpec.configure do |config|
+  config.use_transactional_fixtures = false
+
+  config.before(:suite) do
+    DatabaseCleaner.clean_with :truncation
+  end
+
+  config.before(:each) do
+    if example.metadata[:js]
+      DatabaseCleaner.strategy = :truncation
+    else
+      DatabaseCleaner.strategy = :transaction
+    end
+    DatabaseCleaner.start
+  end
+
+  config.after(:each) do
+    DatabaseCleaner.clean
+  end
+end</code></pre></noscript></div>
+
+
+
+</div>
+
+
+  <footer>
+    <p class="meta">
+      
+  
+
+<span class="byline author vcard">Posted by <span class="fn"><a href="/about" title="About the author (Wei Lu)" rel="author">Wei Lu</a></span></span>
+
+      
+
+
+
+
+
+
+
+
+  
+
+
+<time datetime="2012-11-10T13:10:00+08:00" pubdate data-updated="true">Nov 10<span>th</span>, 2012</time>
+      
+
+<span class="categories">
+  
+    <a class='category' href='/blog/categories/active-record/'>active record</a>, <a class='category' href='/blog/categories/capybara/'>capybara</a>, <a class='category' href='/blog/categories/coding/'>coding</a>, <a class='category' href='/blog/categories/rspec/'>rspec</a>, <a class='category' href='/blog/categories/ruby/'>ruby</a>, <a class='category' href='/blog/categories/testing/'>testing</a>, <a class='category' href='/blog/categories/transactional-fixtures/'>transactional fixtures</a>
+  
+</span>
+
+
+    </p>
+    
+      <div class="sharing">
+  
+  <a href="http://twitter.com/share" class="twitter-share-button" data-url="http://weilu.github.io/blog/2012/11/10/conditionally-switching-off-transactional-fixtures/" data-via="luweidewei" data-counturl="http://weilu.github.io/blog/2012/11/10/conditionally-switching-off-transactional-fixtures/" >Tweet</a>
+  
+  
+  <div class="g-plusone" data-size="medium"></div>
+  
+  
+</div>
+
+    
+    <p class="meta">
+      
+        <a class="basic-alignment left" href="/blog/2012/10/27/the-peace-of-mind-project/" title="Previous Post: The Peace of Mind Project">&laquo; The Peace of Mind Project</a>
+      
+      
+        <a class="basic-alignment right" href="/blog/2013/05/11/back-scratching/" title="next Post: Back Scratching">Back Scratching &raquo;</a>
+      
+    </p>
+  </footer>
+</article>
+
+</div>
+
+
+    </div>
+  </div>
+  
+
+
+
+
+
+  <script type="text/javascript">
+    (function() {
+      var script = document.createElement('script'); script.type = 'text/javascript'; script.async = true;
+      script.src = 'https://apis.google.com/js/plusone.js';
+      var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(script, s);
+    })();
+  </script>
+
+
+
+  <script type="text/javascript">
+    (function(){
+      var twitterWidgets = document.createElement('script');
+      twitterWidgets.type = 'text/javascript';
+      twitterWidgets.async = true;
+      twitterWidgets.src = 'http://platform.twitter.com/widgets.js';
+      document.getElementsByTagName('head')[0].appendChild(twitterWidgets);
+    })();
+  </script>
+
+
+
+
+
+</body>
+</html>

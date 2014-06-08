@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="utf-8"?>
+<feed xmlns="http://www.w3.org/2005/Atom">
+
+  <title><![CDATA[Category: script | What she said]]></title>
+  <link href="http://weilu.github.io/blog/categories/script/atom.xml" rel="self"/>
+  <link href="http://weilu.github.io/"/>
+  <updated>2014-06-08T14:39:43+08:00</updated>
+  <id>http://weilu.github.io/</id>
+  <author>
+    <name><![CDATA[Wei Lu]]></name>
+    <email><![CDATA[luwei.here@gmail.com]]></email>
+  </author>
+  <generator uri="http://octopress.org/">Octopress</generator>
+
+  
+  <entry>
+    <title type="html"><![CDATA[Proxy: Have you tried turning it off and on again on Mac OS X?]]></title>
+    <link href="http://weilu.github.io/blog/2013/09/13/proxy-have-you-tried-turning-it-off-and-on-again-on-mac-os-x/"/>
+    <updated>2013-09-13T00:06:00+08:00</updated>
+    <id>http://weilu.github.io/blog/2013/09/13/proxy-have-you-tried-turning-it-off-and-on-again-on-mac-os-x</id>
+    <content type="html"><![CDATA[<p><img src="/images/post/2013-09-13-roy.png" title="Hello IT" alt="roy" /></p>
+
+<p>Say you have an EC2 micro instance set up for convenient access to IP restricted services, like pandora and certain porn sites. Aren't you tired of manually setting up the tunnel and editing proxy settings on your mac?</p>
+
+<p>Here you go.</p>
+
+<p><div><script src='https://gist.github.com/6539993.js?file=proxy.sh'></script>
+<noscript><pre><code># on
+sudo networksetup -setsocksfirewallproxy &quot;Wi-Fi&quot; localhost 1080
+ssh -D 1080 -i ~/.ssh/proxy.pem [remote-user]@[remote-server]
+
+# off
+sudo networksetup -setsocksfirewallproxystate &quot;Wi-Fi&quot; off</code></pre></noscript></div>
+</p>
+]]></content>
+  </entry>
+  
+</feed>

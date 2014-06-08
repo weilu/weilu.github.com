@@ -1,0 +1,51 @@
+<?xml version="1.0" encoding="utf-8"?>
+<feed xmlns="http://www.w3.org/2005/Atom">
+
+  <title><![CDATA[Category: address | What she said]]></title>
+  <link href="http://weilu.github.io/blog/categories/address/atom.xml" rel="self"/>
+  <link href="http://weilu.github.io/"/>
+  <updated>2014-06-08T14:39:43+08:00</updated>
+  <id>http://weilu.github.io/</id>
+  <author>
+    <name><![CDATA[Wei Lu]]></name>
+    <email><![CDATA[luwei.here@gmail.com]]></email>
+  </author>
+  <generator uri="http://octopress.org/">Octopress</generator>
+
+  
+  <entry>
+    <title type="html"><![CDATA[Bitcoin Address Reuse]]></title>
+    <link href="http://weilu.github.io/blog/2014/06/08/bitcoin-address-reuse/"/>
+    <updated>2014-06-08T14:28:00+08:00</updated>
+    <id>http://weilu.github.io/blog/2014/06/08/bitcoin-address-reuse</id>
+    <content type="html"><![CDATA[<p>Why is it a bad practice? It's bad for privacy and potentially security under certain circumstances.</p>
+
+<h2>Privacy</h2>
+
+<h3>Background</h3>
+
+<p>My salary is paid in Bitcoin (reality). I use a single Bitcoin address for everything (fictional). You and I are friends (fictional, obviously).</p>
+
+<h3>The Story</h3>
+
+<p>Say we had a good time hanging out in a bar. Your significant other called -- it's time to grab the bill and head home. The bar doesn't accept Bitcoin nor credit cards. You don't have any cash. I paid for you. Later you want to pay me back. I give you my one and only Bitcoin address to receive payment. You send some coins to it. You want to check if the transaction is confirmed. You looked it up on blockchain.info. While you are at it, you click on the address, noticing that every month on the first day I receive the same amount of bitcoins. And the amount isn't trivial. Bam! It doesn't take a genius to guess that it's my salary.</p>
+
+<h2>Security</h2>
+
+<h3>Background</h3>
+
+<p>Your operation system has a weakass <a href="http://en.wikipedia.org/wiki/Random_number_generation">random number generator</a> (fictional-ish, at some point <a href="https://bitcoin.org/en/alert/2013-08-11-android">it was true for Android</a>). You use a single Bitcoin address for everything (fictional, I hope).</p>
+
+<p>Every time you send some coins, a transaction is created and signed with your private key that corresponds to your one and only Bitcoin address. A random number generator is involved to add some randomness to your signature because that makes it secure <a href="http://en.wikipedia.org/wiki/Elliptic_Curve_DSA#Signature_generation_algorithm">according to mathematics</a>.</p>
+
+<h3>The Story</h3>
+
+<p><img src="/images/post/2014-06-08-random.png" title="RFC 1149.5 specifies 4 as the standard IEEE-vetted random number." alt="xkcd random number" /></p>
+
+<p>^^ Your random number generator</p>
+
+<p>Because of your weakass random number generator, your two transactions dated four days apart are signed with the same "random" number. Bam! Some smartass figures out your private key by staring at your two transactions for long enough.</p>
+]]></content>
+  </entry>
+  
+</feed>
