@@ -6,7 +6,7 @@ comments: true
 categories: [bitcoin, address]
 ---
 
-Bank account number is often used as an analogy to Bitcoin address when one is first introduced to Bitcoin. Then you heard that it is bad to use the same Bitcoin address for all your transactions. I was asked by 3 different people something along the lines of 
+When one is first introduced to Bitcoin, a bank account number is often used as an analogy for a Bitcoin address. Then you hear that it is bad to use the same Bitcoin address for all your transactions. I was asked by three different people something along the lines of
 
 > If I give the same bank account number to different people who want to pay me, why do I need to give out different Bitcoin addresses to different people?
 
@@ -32,10 +32,10 @@ __Scenario:__ Your operation system has a weakass [random number generator](http
 
 __The story:__ Because of your weakass random number generator, your two transactions dated four days apart are signed with the same "random" number. Bam! Some smartpants figures out your private key by staring at your two transactions for long enough. You lost all your bitcoins.
 
-__Explanation:__ Every time you send some coins, a transaction is created and signed with your private key that corresponds to your Bitcoin address. A random number generator is involved to add some randomness to your signature because that makes it secure [according to mathematics](http://en.wikipedia.org/wiki/Elliptic_Curve_DSA#Signature_generation_algorithm). By having a single Bitcoin address, all transactions you ever make is signed with the same private key. More than one transaction made with the same key + same "random" number in signature = vulnerability.
+__Explanation:__ Every time you send some coins, a transaction is created and signed with your private key that corresponds to your Bitcoin address. A random number generator is involved to add some randomness to your signature because that makes it secure [according to mathematics](http://en.wikipedia.org/wiki/Elliptic_Curve_DSA#Signature_generation_algorithm). By having a single Bitcoin address, all transactions you ever make are signed with the same private key. More than one transaction made with the same key + same "random" number in signature = vulnerability.
 
-By using different addresses as the source of fund for every transaction, you avoid signing more than one transaction with the same private key. So even with a bad random number generator, the vulnerability described above no longer applies.
+By using different addresses as the source of funds for every transaction, you avoid signing more than one transaction with the same private key. So even with a bad random number generator, the vulnerability described above no longer applies.
 
-There you have it, why reusing Bitcoin address is bad. Until next time,
+There you have it, why reusing Bitcoin addresses is bad. Until next time,
 
 > Vires in Numeris
