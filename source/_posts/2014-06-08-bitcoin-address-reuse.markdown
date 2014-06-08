@@ -14,7 +14,7 @@ The short answer is: Address reuse is bad for privacy and potentially security u
 
 ## Privacy
 
-__Background:__ It comes down to the fact that all Bitcoin transactions are public. Given an address, anyone can look up all transactions ever sent to and from this address. (This is where the bank account analogy breaks down.)
+__Background:__ All Bitcoin transactions are public. Given an address, anyone can look up all transactions ever sent to and from this address. This is where the bank account number analogy breaks down.
 
 __Scenario:__ My salary is paid in Bitcoin (reality). I use a single Bitcoin address for everything (fictional). You and I are friends (fictional, obviously).
 
@@ -25,7 +25,7 @@ __The story:__ Say we had a good time hanging out in a bar. Your significant oth
 
 __Background:__ Every time you send some coins, a transaction is created and signed with your private key that corresponds to your one and only Bitcoin address. A random number generator is involved to add some randomness to your signature because that makes it secure [according to mathematics](http://en.wikipedia.org/wiki/Elliptic_Curve_DSA#Signature_generation_algorithm).
 
-__Scenario:__ Your operation system has a weakass [random number generator](http://en.wikipedia.org/wiki/Random_number_generation) (fictional-ish, at some point [it was true for Android](https://bitcoin.org/en/alert/2013-08-11-android)). You use a single Bitcoin address for everything (fictional, I hope). 
+__Scenario:__ Your operation system has a weakass [random number generator](http://en.wikipedia.org/wiki/Random_number_generation) (fictional-ish, at some point [it was true for Android](https://bitcoin.org/en/alert/2013-08-11-android)). You use a single Bitcoin address for everything (fictional, I hope).
 
 ![xkcd random number](/images/post/2014-06-08-random.png "RFC 1149.5 specifies 4 as the standard IEEE-vetted random number.")
 
