@@ -1,6 +1,6 @@
 ---
 layout: post
-title: "Perks of Being an HD Wallet"
+title: "The Perks of Being an HD Wallet"
 date: 2014-07-11 08:27
 comments: true
 categories: [bitcoin, wallet, HD wallet, hierarchical deterministic wallet, bip32]
