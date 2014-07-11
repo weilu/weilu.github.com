@@ -9,7 +9,7 @@
   <meta name="author" content="Wei Lu">
 
   
-  <meta name="description" content="When one is first introduced to Bitcoin, a bank account number is often used as an analogy for a Bitcoin address. Then you hear that it is bad to use &hellip;">
+  <meta name="description" content="The technical crowd in Bitcoin land has been excited about hierarchical deterministic(HD) wallet since the day it came out. But what benefits exactly &hellip;">
   
 
   <!-- http://t.co/dKP3o1e -->
@@ -80,6 +80,66 @@
     <div id="content">
       <div class="blog-index">
   
+  
+  
+    <article>
+      
+  <header>
+    
+      <h2 class="entry-title"><a href="/blog/2014/07/11/perks-of-being-an-hd-wallet/">Perks of Being an HD Wallet</a></h2>
+    
+    
+      <p class="meta">
+        
+
+
+
+
+
+
+
+
+  
+
+
+<time datetime="2014-07-11T08:27:00+08:00" pubdate data-updated="true">Jul 11<span>th</span>, 2014</time>
+        
+      </p>
+    
+  </header>
+
+
+  <div class="entry-content"><p>The technical crowd in Bitcoin land has been excited about hierarchical deterministic(HD) wallet since the day it came out. But what benefits exactly does it bring to regular end users?</p>
+
+<p>tl;dr much more simplified backup + better privacy</p>
+
+<p>To understand why that is the case, we need to start with how non-HD wallet works.</p>
+
+<h2>The non-HD way</h2>
+
+<p>The primary job of a wallet is to manage your keys. To spend any funds, the wallet needs to find private keys(s) that correspond to the spendable funds. To receive any funds, the wallet needs to tell you what is the address that corresponds to a private key that it&#8217;s aware of. Previously, we&#8217;ve already established that <a href="/blog/2014/06/08/bitcoin-address-reuse/">it is bad to use a single address for all your transactions</a>. But why do wallets still do it? A single address is the default setting for most wallets because it has its perks. For wallets, from a technical point of view, a single address is easy to manage. A user backs up his/her one and only private key and be done with it for good. For users new to Bitcoin, the bank account analogy stands, so less confusion for users. Privacy seems like a reasonable price to pay.</p>
+
+<p>Some wallets allow users to create more addresses. I guess the rationale is that those who care to create more addresses are power users who more or less know some inter workings of Bitcoin. So they shall be given the freedom to manage their own addresses/keys. But here&#8217;s the catch, in case you don&#8217;t already know, every time you create a new address, you need to back up your wallet. Why? The point of a backup is to save another copy of all your private keys that correspond to addresses that you have unspent funds or can potentially receive funds at in the future. So in case that you lose the device that has your wallet which holds all the private keys, you can still access your funds on another device by importing the backup keys. In case one forgets to carry out a backup in time, he/she risks losing funds that are sent to the addresses whose corresponding private keys are not among the backed up keys.</p>
+
+<p>In short, in the non-HD land, as a user, if you want to avoid address reuse and ensure the safety of your funds at the same time, you&#8217;d have to go through the inconvenience of carrying out backups whenever you creates a new address. Is there a way we can avoid this privacy/fund security/convenience trade-off? And even better, can we have wallets abstract away the key/address management from users altogether?</p>
+
+<h2>HD wallets come to the rescue</h2>
+
+<p>The technical specs of hierachical deterministic wallets are defined by <a href="https://github.com/bitcoin/bips/blob/master/bip-0032.mediawiki">BIP32</a>. The gist of BIP32 is that it defines how a tree of private keys can be derived from a single master key in a deterministic manner. &#8220;Hierarchical&#8221; refers to the tree-like structure. &#8220;Deterministic&#8221; means that so long as one follows the specs, a given master key is guaranteed to always produces the exact same tree regardless of how many times one carries out the derivation. HD wallets have many potential applications. Here, I&#8217;m only going to focus on how it solves the above-mentioned problems with the non-HD wallets.</p>
+
+<p><img src="/images/post/2014-07-11-tree.png" title="Not only is that terrible in general, but you just KNOW Billy's going to open the root present first, and then everyone will have to wait while the heap is rebuilt." alt="xkcd tree" /></p>
+
+<p>^^ A tree-like structure</p>
+
+<p>With BIP32, the line between the user responsibilities and wallet responsibilities is clear &#8211; user keeps the master key safe; and it&#8217;s the only backup he/she will ever need. While the wallet generates keys in the tree when necessary, for example, whenever an address is used for receiving funds, the wallet generates the next address in line to be used for the next transaction. The user always gives out the current address wallet displays for optimal privacy, while the wallet needs to watch all the addresses it has ever generated for the purpose of receiving funds. In case a user loses his/her device that has the wallet, they can enter their master key in an HD wallet on another device. The wallet goes ahead and derive the tree of private keys, scans each key for funds. And there we go, a wallet recovered.</p>
+
+<p>Enough said, embrace HD wallet, for simpler backup and better privacy :)</p>
+</div>
+  
+  
+
+
+    </article>
   
   
     <article>

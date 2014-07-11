@@ -1,8 +1,8 @@
 <?xml version="1.0" encoding="utf-8"?>
 <feed xmlns="http://www.w3.org/2005/Atom">
 
-  <title><![CDATA[Category: bitcoin | What she said]]></title>
-  <link href="http://weilu.github.io/blog/categories/bitcoin/atom.xml" rel="self"/>
+  <title><![CDATA[Category: HD wallet | What she said]]></title>
+  <link href="http://weilu.github.io/blog/categories/hd-wallet/atom.xml" rel="self"/>
   <link href="http://weilu.github.io/"/>
   <updated>2014-07-11T09:53:55+08:00</updated>
   <id>http://weilu.github.io/</id>
@@ -43,47 +43,6 @@
 <p>With BIP32, the line between the user responsibilities and wallet responsibilities is clear -- user keeps the master key safe; and it's the only backup he/she will ever need. While the wallet generates keys in the tree when necessary, for example, whenever an address is used for receiving funds, the wallet generates the next address in line to be used for the next transaction. The user always gives out the current address wallet displays for optimal privacy, while the wallet needs to watch all the addresses it has ever generated for the purpose of receiving funds. In case a user loses his/her device that has the wallet, they can enter their master key in an HD wallet on another device. The wallet goes ahead and derive the tree of private keys, scans each key for funds. And there we go, a wallet recovered.</p>
 
 <p>Enough said, embrace HD wallet, for simpler backup and better privacy :)</p>
-]]></content>
-  </entry>
-  
-  <entry>
-    <title type="html"><![CDATA[Bitcoin Address Reuse]]></title>
-    <link href="http://weilu.github.io/blog/2014/06/08/bitcoin-address-reuse/"/>
-    <updated>2014-06-08T14:28:00+08:00</updated>
-    <id>http://weilu.github.io/blog/2014/06/08/bitcoin-address-reuse</id>
-    <content type="html"><![CDATA[<p>When one is first introduced to Bitcoin, a bank account number is often used as an analogy for a Bitcoin address. Then you hear that it is bad to use the same Bitcoin address for all your transactions. I was asked by three different people something along the lines of</p>
-
-<blockquote><p>If I give the same bank account number to different people who want to pay me, why do I need to give out different Bitcoin addresses to different people?</p></blockquote>
-
-<p>The short answer is: Address reuse is bad for privacy and potentially security under certain circumstances.</p>
-
-<h2>Privacy</h2>
-
-<p><strong>Scenario:</strong> My salary is paid in Bitcoin (reality). I use a single Bitcoin address for everything (fictional). You and I are friends (fictional, obviously).</p>
-
-<p><strong>The story:</strong> Say we have a good time hanging out in a bar. Your significant other calls -- it's time to head home. I cover the bill because you don't have any cash. Later you want to pay me back. I give you my one and only Bitcoin address to receive payment. You send some coins to it. You want to check if the transaction is confirmed. You look it up on blockchain.info. While you are at it, you click on the address, noticing that every month on the first day I receive the same amount of bitcoins. And the amount isn't trivial. Bam! It doesn't take a genius to deduce that it's my salary.</p>
-
-<p><strong>Explanation:</strong> It comes down to the fact that all Bitcoin transactions are public. Given an address, anyone can look up transactions ever sent to and from this address. This is where the bank account number analogy breaks down, because the transaction history of a bank account is private by default.</p>
-
-<p>By giving out a fresh address every time, the payer isn't able to learn about your past transaction history by looking up the address he/she has in hand.</p>
-
-<h2>Security</h2>
-
-<p><strong>Scenario:</strong> Your operation system has a weakass <a href="http://en.wikipedia.org/wiki/Random_number_generation">random number generator</a> (fictional-ish, at some point <a href="https://bitcoin.org/en/alert/2013-08-11-android">it was true for Android</a>). You use a single Bitcoin address for everything (fictional, I hope).</p>
-
-<p><img src="/images/post/2014-06-08-random.png" title="RFC 1149.5 specifies 4 as the standard IEEE-vetted random number." alt="xkcd random number" /></p>
-
-<p>^^ Your random number generator</p>
-
-<p><strong>The story:</strong> Because of your weakass random number generator, your two transactions dated four days apart are signed with the same "random" number. Bam! Some smartpants figures out your private key by staring at your two transactions for long enough. You lost all your bitcoins.</p>
-
-<p><strong>Explanation:</strong> Every time you send some coins, a transaction is created and signed with your private key that corresponds to your Bitcoin address. A random number generator is involved to add some randomness to your signature because that makes it secure <a href="http://en.wikipedia.org/wiki/Elliptic_Curve_DSA#Signature_generation_algorithm">according to mathematics</a>. By having a single Bitcoin address, all transactions you ever make are signed with the same private key. More than one transaction made with the same key + same "random" number in signature = vulnerability.</p>
-
-<p>By using different addresses as the source of funds for every transaction, you avoid signing more than one transaction with the same private key. So even with a bad random number generator, the vulnerability described above no longer applies.</p>
-
-<p>There you have it, why reusing Bitcoin addresses is bad. Until next time,</p>
-
-<blockquote><p>Vires in Numeris</p></blockquote>
 ]]></content>
   </entry>
   
