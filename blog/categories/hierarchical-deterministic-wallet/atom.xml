@@ -4,7 +4,7 @@
   <title><![CDATA[Category: hierarchical deterministic wallet | What she said]]></title>
   <link href="http://weilu.github.io/blog/categories/hierarchical-deterministic-wallet/atom.xml" rel="self"/>
   <link href="http://weilu.github.io/"/>
-  <updated>2014-07-11T14:21:40+08:00</updated>
+  <updated>2014-07-11T14:27:16+08:00</updated>
   <id>http://weilu.github.io/</id>
   <author>
     <name><![CDATA[Wei Lu]]></name>
@@ -14,10 +14,10 @@
 
   
   <entry>
-    <title type="html"><![CDATA[Perks of Being an HD Wallet]]></title>
-    <link href="http://weilu.github.io/blog/2014/07/11/perks-of-being-an-hd-wallet/"/>
+    <title type="html"><![CDATA[The Perks of Being an HD Wallet]]></title>
+    <link href="http://weilu.github.io/blog/2014/07/11/the-perks-of-being-an-hd-wallet/"/>
     <updated>2014-07-11T08:27:00+08:00</updated>
-    <id>http://weilu.github.io/blog/2014/07/11/perks-of-being-an-hd-wallet</id>
+    <id>http://weilu.github.io/blog/2014/07/11/the-perks-of-being-an-hd-wallet</id>
     <content type="html"><![CDATA[<p>The technical crowd in Bitcoin land has been excited about hierarchical deterministic(HD) wallet since the day it came out. But what benefits exactly does it bring to regular end users?</p>
 
 <p>tl;dr much more simplified backup + better privacy</p>
