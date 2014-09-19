@@ -9,7 +9,7 @@
   <meta name="author" content="Wei Lu">
 
   
-  <meta name="description" content="The technical crowd in Bitcoin land has been excited about hierarchical deterministic(HD) wallet since the day it came out. But what benefits exactly &hellip;">
+  <meta name="description" content="Is it scalable? Good question. If the wallet generates a new address every time an address is used for receiving funds, it means the more &hellip;">
   
 
   <!-- http://t.co/dKP3o1e -->
@@ -37,7 +37,7 @@
 
     (function() {
       var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
-      ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
+      ga.src = ('https:' == document.location.protocol ? 'https://' : 'http://') + 'stats.g.doubleclick.net/dc.js';
       var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
     })();
   </script>
@@ -80,6 +80,52 @@
     <div id="content">
       <div class="blog-index">
   
+  
+  
+    <article>
+      
+  <header>
+    
+      <h2 class="entry-title"><a href="/blog/2014/09/19/scale-hd-wallet/">Scale Hd Wallet</a></h2>
+    
+    
+      <p class="meta">
+        
+
+
+
+
+
+
+
+
+  
+
+
+<time datetime="2014-09-19T00:00:00+08:00" pubdate data-updated="true">Sep 19<span>th</span>, 2014</time>
+        
+      </p>
+    
+  </header>
+
+
+  <div class="entry-content"><h2>Is it scalable?</h2>
+
+<p>Good question. If the wallet generates a new address every time an address is used for receiving funds, it means the more transactions a user has, the more addresses a wallet has, the more addresses a wallet has to watch for incoming and outgoing transactions.</p>
+
+<p>For a web wallet that consumes a blockchain API provided by a server, how scalable it is depends very much on the API design. If the API is <a href="https://blockchain.info/api/blockchain_api">the blockchain.info style API</a>, which indexes unspent transaction outputs(UTXO) and transactions by addresses, it is not scalable, because the number of requests the client needs to make to the server increases linearly with the number of addresses the wallet has.</p>
+
+<p>One alternative is to also index transactions by extended public keys. An HD wallet with one account is then able to query the API with its account extended public key with a single API call regardless of the number of addresses the wallet has consumed. The heavy lifting of generating the chain of addresses, scanning the addresses for transactions is pushed upstream to the API server. The response can be streamed to the client as its size still depends on the number of addresses a wallet has consumed. While the client is still receiving responses from the server, it displays &#8220;Synchronization in progress&#8221; to the user. The API should also embed the latest block id in the response to the client, and allow client to query with a <code>since</code> parameter which can be any block id. The client can then store the transactions data and the block id from the last sync. And for the subsequent syncs, the client supplies the latest known block id as the <code>since</code> parameter together with its extended public key.</p>
+
+<p>Note that unlike addresses, extended public keys cannot be extracted from transactions. Therefore the indexing is done on demand &#8211; the first time an extended public key is used for querying the API is when the server scans through its existing data and creates the necessary indexes.</p>
+
+<p>One major drawback of this approach is that the server needs to be aware of the extended public keys of HD wallet accounts. That&#8217;s some information that clients have to trust the server with. In case the API server is compromised, leaking of extended public keys means lose of user privacy.</p>
+</div>
+  
+  
+
+
+    </article>
   
   
     <article>
